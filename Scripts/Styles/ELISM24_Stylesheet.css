@@ -1,0 +1,258 @@
+.Content_Item[Background]{
+    background-image: url("../../Assets/Background/BG1.png");
+    background-color: #2b2f51;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: -webkit-fill-available;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    z-index: 50;
+}
+
+.ELISM24_Controls, .ELISM24_Records{
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.ELISM24_Controls_Info{
+    display: grid;
+    grid-template-columns: auto 1fr 1fr;
+    grid-template-areas: 
+        "Timer Timer_Running Team"
+        "Timer Timer_Running Word"
+        "Timer_Status Timer_Status Timer_Status"
+    ;
+    align-items: center;
+    grid-gap: 10px;
+}
+
+.ELISM24_Controls_Info_Time, .ELISM24_Controls_Info_Team, .ELISM24_Controls_Info_Word, .ELISM24_Controls_Info_Time_Running{
+    font-family: var(--Text-Font-Primary);
+    color: var(--Text-Color);
+    margin: 0;
+}
+
+.ELISM24_Controls_Info_Time{
+    grid-area: Timer;
+    font-size: 70px;
+    
+}
+
+.ELISM24_Controls_Info_Team{
+    grid-area: Team;
+}
+
+.ELISM24_Controls_Info_Word{
+    grid-area: Word;
+}
+
+.ELISM24_Controls_Info_Timer_State{
+    grid-area: Timer_Status;
+}
+
+.ELISM24_Controls_Info_Time_Running{
+    grid-area: Timer_Running;
+    text-align: left;
+    align-self: flex-end;
+}
+
+.ELISM24_Controls_Buttons{
+    display: grid;
+    grid-template-rows: 70px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-gap: 10px;
+}
+
+.ELISM24_Controls_Values{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-gap: 10px;
+    margin-top: 10px;
+}
+
+.ELISM24_Controls_Values_Card{
+    display: grid;
+    grid-template-rows: 1fr;
+    padding: 10px;
+    border: solid var(--Color-Borders) 3px;
+    border-radius: 5px;
+    background-color: var(--BG-Color-Opacitated);
+}
+
+.ELISM24_Records{
+    margin-top: 10px;
+}
+
+.ELISM24_Records_Title{
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+
+.ELISM24_Records_List_Item{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr) 80px;
+    align-items: center;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.ELISM24_Records_List > .ELISM24_Records_List_Item:hover{
+    background-color: var(--BG-Color-Hover);
+    cursor: pointer;
+}
+
+.ELISM24_Records_List_Item_Text{
+    font-family: var(--Text-Font-Secondary);
+    color: var(--Text-Color);
+    margin: 0;
+}
+
+.ELISM24_Records_List_Item_Delete{
+    height: 40px;
+}
+
+.ELISM24_Records_List_Item_Delete > img{
+    width: 20px;
+    height: 20px;
+    padding: 10px;
+    margin: 0;
+}
+
+.ELISM24_Timer{
+    background-color: #2b2f51;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    animation-duration: 0.2s;
+    animation-iteration-count: 2;
+}
+
+.ELISM24_Timer[Shake = "None"]{
+    animation-name: none;
+}
+
+.ELISM24_Timer[Shake = "Shake"]{
+    animation-name: Shake;
+}
+
+.ELISM24_Timer[State="Timer"] > .ELISM24_Timer_Time > .ELISM24_Timer_Time_Text{
+    font-size: 20vw;
+}
+
+.ELISM24_Timer[State="Timer"] > .ELISM24_Timer_Word > .ELISM24_Timer_Word_Text{
+    font-size: 5vw;
+    opacity: 0%;
+    display: none;
+}
+
+.ELISM24_Timer[State="WithWord"] > .ELISM24_Timer_Time > .ELISM24_Timer_Time_Text{
+    font-size: 10vw;
+}
+
+.ELISM24_Timer[State="WithWord"] > .ELISM24_Timer_Word > .ELISM24_Timer_Word_Text{
+    font-size: 15vw;
+    opacity: 100%;
+    display: block;
+}
+
+
+.ELISM24_Timer_Time_Text, .ELISM24_Timer_Word_Text{
+    font-family: Meditative;
+    text-align: center;
+    margin: 0;
+    color: #fcb956;
+}
+
+@keyframes Shake{
+    0% {
+        transform: translateX(-150px);
+    }
+
+    50% {
+        transform: translateX(150px);
+    }
+
+    100% {
+        transform: translateX(0px);
+    }
+}
+
+.ELISM24_Banner{
+    background-color: red;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-color: #2b2f51;
+    opacity: 0%;
+}
+
+.ELISM24_Banner[State = "Active"]{
+    opacity: 100%;
+}
+
+.ELISM24_Banner_Layer{
+    position: absolute;
+    object-fit: contain;
+    width: 100%;
+}
+
+.ELISM24_Banner_Logo{
+    position: absolute;
+    width: 80%;
+}
+
+.ELISM24_Banner_Layer:nth-child(2), .ELISM24_Banner_Layer:nth-child(4){
+    bottom: -50px;
+}
+
+.ELISM24_Banner_Layer:nth-child(4){
+    right: 0;
+}
+
+.ELISM_Sparkle{
+    transform: scale(0.25);
+    opacity: 0%;
+    transition: all 6s !important;
+    transition-timing-function: cubic-bezier(0, 0.64, 0, 0.96);
+    transition-timing-function: linear;
+    animation-name: ELISM_Sparkle_Blink;
+    animation-iteration-count: 4;
+    animation-duration: 5s;
+}
+
+.ELISM_Sparkle_Decoration{
+    position: absolute;
+    transform: scale(0.05);
+    opacity: 100%;
+    transition: all 6s !important;
+    z-index: 0;
+}
+
+.ELISM_Sparkle_Decoration_Twinkling{
+    position: absolute;
+    opacity: 0%;
+    z-index: 0;
+    transform: scale(0.03);
+    transition-timing-function: cubic-bezier(0, 0.64, 0, 0.96);
+    transition-timing-function: linear;
+    animation-name: ELISM_Sparkle_Blink;
+    animation-iteration-count: infinite;
+    animation-duration: 3s;
+}
+
+@keyframes ELISM_Sparkle_Blink{
+    0%{
+        opacity: 0%;
+    }
+    50%{
+        opacity: 100%;
+    }
+    100%{
+        opacity: 0%;
+    }
+}

@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id="Page_Title">
+        App by ElmerF
+    </title>
+    <base href="../">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link rel="stylesheet" href="Scripts/Styles/App_Main.css">
+    <link rel="stylesheet" href="Scripts/Styles/ERUMAUI_Settings.css">
+    <link rel="icon" type="image/png" href="Assets/Icons/favicon.png" sizes="96x96" id="Page_Favicon">
+</head>
+<body onload="Settings_Initialization_Settings()">
+    <!-- <script src="Scripts/Javascript/App_Main.js"></script> -->
+    <script src="Scripts/Javascript/FileSaver.js" defer></script>
+    <script src="Scripts/Javascript/App_Javascript_Debugging.js" defer></script>
+    <script src="Scripts/Javascript/App_Javascript_ERUMAUI_Core.js" defer></script>
+    <script src="Scripts/Javascript/App_Javascript_ERUMAUI.js" defer></script>
+    <script src="Scripts/Javascript/App_Javascript_Extras.js" defer></script>
+    <script src="Scripts/Javascript/App_Javascript_KeyboardControls.js" defer></script>
+    <script src="Scripts/Javascript/ERUMAUI_Javascript_Settings.js" defer></script>
+    <script src="Scripts/Javascript/App_Javascript_Initialization.js" defer></script>
+    <!-- <script src="Scripts/Javascript/App_Javascript_Projects.js" defer></script> -->
+    <div class="LoadingScreen" id="LoadingScreen">
+        <div class="LoadingScreen_Simple" id="LoadingScreen_Simple" Display="none">
+            <div class="LoadingScreen_Simple_Main">
+                <img class='LoadingScreen_Simple_Main_Icon' src='Assets/Icons/favicon.png' id="LoadingScreen_Icon_Simple" draggable='false' loading='lazy'/>
+                <h2 class="LoadingScreen_Simple_Main_Title" id="LoadingScreen_Title_Simple">
+                    App by ElmerF
+                </h2>
+                <p class="LoadingScreen_Simple_Main_Subtitle" id="LoadingScreen_Subtitle_Simple">
+                    Template
+                </p>
+            </div>
+            <div class="LoadingScreen_Simple_Bottom">
+                <div class="General_Loading LoadingScreen_Simple_Bottom_Loader">
+                    <div class="General_Loading_Bar"></div>
+                </div>
+                <div class="LoadingScreen_Simple_Bottom_Copyright">
+                    <img class='LoadingScreen_Simple_Bottom_Copyright_Icon' src='Assets/Icons/favicon.png' draggable='false' loading='lazy' id="LoadingScreen_Copyright_Icon_Simple"/>
+                    <p class="LoadingScreen_Simple_Bottom_Copyright_Title" id="LoadingScreen_Copyright_Title_Simple">
+                        Content By ElmerF 2024
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="LoadingScreen_Splash" id="LoadingScreen_Splash" Display="none">
+            <div class="LoadingScreen_Splash_Window">
+                <div class="LoadingScreen_Splash_Window_Image"></div>
+                <div class="LoadingScreen_Splash_Window_Main">
+                    <img class='LoadingScreen_Splash_Window_Main_Icon' src='Assets/Icons/favicon.png' id="LoadingScreen_Icon_Splash" draggable='false' loading='lazy'/>
+                    <div class="LoadingScreen_Splash_Window_Main_Text">
+                        <h2 class="LoadingScreen_Splash_Window_Main_Title" id="LoadingScreen_Title_Splash">
+                            App by ElmerF
+                        </h2>
+                        <p class="LoadingScreen_Splash_Window_Main_Subtitle" id="LoadingScreen_Subtitle_Splash">
+                            Template
+                        </p>
+                    </div>
+                </div>
+                <div class="General_Loading LoadingScreen_Splash_Window_Loader">
+                    <div class="General_Loading_Bar"></div>
+                </div>
+            </div>
+            <div class="LoadingScreen_Splash_Bottom">
+                <div class="LoadingScreen_Splash_Bottom_Copyright">
+                    <img class='LoadingScreen_Splash_Bottom_Copyright_Icon' src='Assets/Icons/favicon.png' id="LoadingScreen_Copyright_Icon_Splash" draggable='false' loading='lazy'/>
+                    <p class="LoadingScreen_Splash_Bottom_Copyright_Title" id="LoadingScreen_Copyright_Title_Splash">
+                        Content By ElmerF 2024
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="LoadingScreen_Custom" id="LoadingScreen_Custom" Display="none">
+            Custom stuff here
+        </div>
+    </div>
+    <div class="ClockScreen" id="ClockScreen" State="Inactive" onclick="ClockScreen_Toggle()">
+        <div class="ClockScreen_Main">
+            <h1 class="ClockScreen_Main_Time" id="ClockScreen_Main_Time">
+                10:23
+            </h1>
+            <p class="ClockScreen_Main_Date" id="ClockScreen_Main_Date">
+                Wednesday, 02/07/2024
+            </p>
+        </div>
+        <div class="ClockScreen_Extra">
+            <img class='ClockScreen_Extra_Icon' src='Assets/Icons/icon_wifi_offline.png' draggable='false' loading='lazy' id="ClockScreen_Extra_InternetStatus"/>
+            <p class="ClockScreen_Extra_Battery" id="ClockScreen_Extra_Battery">
+                100%
+            </p>
+        </div>
+    </div>
+    <div class="Subwindows" id="Subwindows">
+        <div class="Subwindow" id="SubwindowIDHere">
+            <div class="Subwindow_TitleBar">
+                <h2 class="Subwindow_TitleBar_Title">
+                    Subwindow
+                </h2>
+                <img class='Subwindow_TitleBar_Close' src='Assets/Icons/icon_close.png' draggable='false' loading='lazy' onclick="Subwindows_Close(this.parentNode.parentNode.id)"/>
+            </div>
+            <div class="Subwindow_Content">
+                <h1 class="General_Title">
+                    Content of subwindow here
+                </h1>
+            </div>
+            <div class="Subwindow_Bottom">
+                <div class="Subwindow_Bottom_Button_SecondaryAction">
+                    Secondary action 
+                </div>
+                <div class="Subwindow_Bottom_Button_PrimaryAction" onclick="Subwindows_Open('ModalIDHere')">
+                    Primary action button text here
+                </div>
+            </div>
+        </div>
+        <div class="Modal" id="ModalIDHere">
+			<div class="Modal_TitleBar">
+				<h2 class="Modal_TitleBar_Title">
+					Modal / Confirmation
+				</h2>
+			</div>
+			<div class="Modal_Content">
+				<p class="General_Paragraph">
+					In this format, the box closes if either the Esc button is pressed, or the user clicks any of the
+					button in the bottom section of the window.
+				</p>
+			</div>
+			<div class="Modal_Content_Bottom">
+				<div class="Subwindow_Bottom_Button_SecondaryAction">
+					Secondary action
+				</div>
+				<div class="Subwindow_Bottom_Button_PrimaryAction" onclick="Subwindows_Close('ModalIDHere')">
+					Primary action
+				</div>
+			</div>
+		</div>
+        <div class="Subwindow" id="Settings_Backgrounds_Wallpaper">
+            <div class="Subwindow_TitleBar">
+                <h2 class="Subwindow_TitleBar_Title">
+                    Change wallpaper
+                </h2>
+                <img class='Subwindow_TitleBar_Close' src='Assets/Icons/icon_close.png' draggable='false' loading='lazy' onclick="Subwindows_Close(this.parentNode.parentNode.id)"/>
+            </div>
+            <div class="Subwindow_Content Settings_Backgrounds_Wallpaper_Contents">
+                <div class="Settings_Backgrounds_Wallpaper_Preview">
+                    <img src="https://elmerf5445.github.io/ERUMA-UI/Assets/Background/ERUMA_UI_3.png" class="Settings_Backgrounds_Item_Preview_Image" loading="lazy" id="Settings_Backgrounds_Wallpaper_Output">
+                </div>
+                <form class="Input_Form" Label_Position="Left" autocomplete="off">
+                    <label class="Input_Label" for="IDOfInputHere">
+                        Background URL: 
+                    </label>
+                    <input type="text" class="Input_Text" id="Settings_Backgrounds_Wallpaper_Input" autocomplete="off" placeholder="URL of your image here"/>
+                </form>
+                <button class="General_Button" onclick="Settings_Image_Check('Settings_Backgrounds_Wallpaper_Input', 'Settings_Backgrounds_Wallpaper_Output')">
+                    Check
+                </button>
+            </div>
+            <div class="Subwindow_Bottom">
+                <div class="Subwindow_Bottom_Button_SecondaryAction" onclick="Subwindows_Close('Settings_Backgrounds_Wallpaper'), Settings_Image_Changes_Cancel('Settings_Backgrounds_Wallpaper_Input')">
+                    Cancel
+                </div>
+                <div class="Subwindow_Bottom_Button_PrimaryAction" id="Settings_Backgrounds_Wallpaper_Button" onclick="Subwindows_Close('Settings_Backgrounds_Wallpaper'), Settings_Image_Changes_Commit('Settings_Backgrounds_Wallpaper_Input', 'Settings_Backgrounds_Wallpaper_Output', 'Settings_Backgrounds_Item_Preview_Image_Wallpaper')">
+                    Save changes
+                </div>
+            </div>
+        </div>
+        <div class="Subwindow" id="Settings_Backgrounds_ClockScreen">
+            <div class="Subwindow_TitleBar">
+                <h2 class="Subwindow_TitleBar_Title">
+                    Change clock screen
+                </h2>
+                <img class='Subwindow_TitleBar_Close' src='Assets/Icons/icon_close.png' draggable='false' loading='lazy' onclick="Subwindows_Close(this.parentNode.parentNode.id)"/>
+            </div>
+            <div class="Subwindow_Content Settings_Backgrounds_Wallpaper_Contents">
+                <div class="Settings_Backgrounds_Wallpaper_Preview">
+                    <img src="https://elmerf5445.github.io/ERUMA-UI/Assets/Background/ERUMA_UI_3.png" class="Settings_Backgrounds_Item_Preview_Image" loading="lazy" id="Settings_Backgrounds_ClockScreen_Output">
+                </div>
+                <form class="Input_Form" Label_Position="Left" autocomplete="off">
+                    <label class="Input_Label" for="IDOfInputHere">
+                        Background URL: 
+                    </label>
+                    <input type="text" class="Input_Text" id="Settings_Backgrounds_ClockScreen_Input" autocomplete="off" placeholder="URL of your image here"/>
+                </form>
+                <button class="General_Button" onclick="Settings_Image_Check('Settings_Backgrounds_ClockScreen_Input', 'Settings_Backgrounds_ClockScreen_Output')">
+                    Check
+                </button>
+            </div>
+            <div class="Subwindow_Bottom">
+                <div class="Subwindow_Bottom_Button_SecondaryAction" onclick="Subwindows_Close('Settings_Backgrounds_ClockScreen'), Settings_Image_Changes_Cancel('Settings_Backgrounds_ClockScreen_Input')">
+                    Cancel
+                </div>
+                <div class="Subwindow_Bottom_Button_PrimaryAction" id="Settings_Backgrounds_Wallpaper_Button" onclick="Subwindows_Close('Settings_Backgrounds_ClockScreen'), Settings_Image_Changes_Commit('Settings_Backgrounds_ClockScreen_Input', 'Settings_Backgrounds_ClockScreen_Output', 'Settings_Backgrounds_Item_Preview_Image_ClockScreen')">
+                    Save changes
+                </div>
+            </div>
+        </div>
+        <div class="Modal" id="Settings_Export">
+			<div class="Modal_TitleBar">
+				<h2 class="Modal_TitleBar_Title">
+					Export settings data
+				</h2>
+			</div>
+			<div class="Modal_Content">
+                <p class="General_Paragraph">
+                    Choose a filename here:
+                </p>
+				<div style="display: grid; grid-template-columns: 1fr 125px; grid-gap: 10px">
+                    <input type="text" class="Input_Text" id="Settings_Export_FileName" placeholder="File name here" value="Settings"/>
+                    <p class="General_Paragraph">
+                        .cbe_eruma_s
+                    </p>
+                </div>
+			</div>
+			<div class="Modal_Content_Bottom">
+				<div class="Subwindow_Bottom_Button_SecondaryAction" onclick="Subwindows_Close('Settings_Export')">
+					Cancel
+				</div>
+				<div class="Subwindow_Bottom_Button_PrimaryAction" onclick="Settings_Export()">
+					Export
+				</div>
+			</div>
+		</div>
+        <div class="Modal" id="Settings_Error_Export_FileNameEmpty">
+			<div class="Modal_TitleBar">
+				<h2 class="Modal_TitleBar_Title">
+					Error - Settings not exported
+				</h2>
+			</div>
+			<div class="Modal_Content">
+                <p class="General_Paragraph">
+                    The settings data cannot be exported because the 'filename' field is empty. Please fill the 'filename' field to continue.
+                </p>
+			</div>
+			<div class="Modal_Content_Bottom">
+				<div class="Subwindow_Bottom_Button_PrimaryAction" onclick="Subwindows_Close('Settings_Error_Export_FileNameEmpty')">
+					Close
+				</div>
+			</div>
+		</div>
+        <div class="Modal" id="Settings_Import">
+			<div class="Modal_TitleBar">
+				<h2 class="Modal_TitleBar_Title">
+					Import settings data
+				</h2>
+			</div>
+			<div class="Modal_Content">
+                <p class="General_Paragraph">
+                    Click the button below to import an article file. It only accepts .cbe_eruma_s files, which is the file extension for settings used for ERUMA UI.
+                </p>
+                <input type="file" id="Settings_Import_File" accept=".cbe_eruma_s" class="Input_Text"/>
+			</div>
+			<div class="Modal_Content_Bottom">
+				<div class="Subwindow_Bottom_Button_SecondaryAction" onclick="Subwindows_Close('Settings_Import')">
+					Cancel
+				</div>
+				<div class="Subwindow_Bottom_Button_PrimaryAction" onclick="Settings_Import()">
+					Import
+				</div>
+			</div>
+		</div>
+    </div>
+    <div class="Toasts" Position="Right" id="Toasts">
+        <!-- <div class="Toast">
+            <img class='Toast_Icon' src='Assets/Icons/placeholder.png' draggable='false' loading='lazy'/>
+            <h2 class="Toast_Title">
+                Hello!
+            </h2>
+            <p class="Toast_Content">
+                This is a normal toast notification.
+            </p>
+        </div> -->
+    </div>
+    <div class="Overlays" id="Overlays">
+        <!-- <div class="Debugger_Console" id="Debugger_Console" style="display: none">
+			<div class="Debugger_Console_Results" id="Debugger_Console_Text"></div>
+			<div class="Debugger_Console_CommandEntry">
+				<input class="Debugger_Console_CommandEntry_Input" id="Debugger_Console_CommandEntry_Input"
+					placeholder="Enter console command and press Enter"></input>
+			</div>
+		</div> -->
+        <div class="Header_PageNavigation_Menu" id="Header_PageNavigation_Menu" State="Inactive">
+            <div class="Header_PageNavigation_Menu_Navigation Header_PageNavigation_Menu_Content">
+                <h1 class="Header_PageNavigation_Menu_Title" id="Header_PageNavigation_Menu_Title">
+                    ERUMA UI 1.0
+                </h1>
+                <div class="Header_PageNavigation_Menu_Buttons" id="Header_PageNavigation_Menu_Links">
+                    <!-- <div class="Header_PageNavigation_Menu_Button_Item">
+                        <img class='Header_PageNavigation_Menu_Button_Item_Icon' src='Assets/Icons/placeholder.png' draggable='false' loading='lazy'/>
+                        <p class="Header_PageNavigation_Menu_Button_Item_Text">
+                            Home
+                        </p>
+                    </div>
+                    <div class="Header_PageNavigation_Menu_Button_Item">
+                        <img class='Header_PageNavigation_Menu_Button_Item_Icon' src='Assets/Icons/placeholder.png' draggable='false' loading='lazy'/>
+                        <p class="Header_PageNavigation_Menu_Button_Item_Text">
+                            Home
+                        </p>
+                    </div> -->
+                </div>
+            </div>
+            <div class="Header_PageNavigation_Menu_Actions Header_PageNavigation_Menu_Content">
+                <h1 class="Header_PageNavigation_Menu_Title">
+                    Page Actions
+                </h1>
+                <div class="Header_PageNavigation_Menu_Buttons" id="Header_PageActions_Menu_Links">
+                    <div class="Header_PageNavigation_Menu_Button_Item">
+                        <img class='Header_PageNavigation_Menu_Button_Item_Icon' src='Assets/Icons/placeholder.png' draggable='false' loading='lazy'/>
+                        <p class="Header_PageNavigation_Menu_Button_Item_Text">
+                            Home
+                        </p>
+                    </div>
+                    <div class="Header_PageNavigation_Menu_Button_Item">
+                        <img class='Header_PageNavigation_Menu_Button_Item_Icon' src='Assets/Icons/placeholder.png' draggable='false' loading='lazy'/>
+                        <p class="Header_PageNavigation_Menu_Button_Item_Text">
+                            Home
+                        </p>
+                    </div>
+                    <div class="Header_PageNavigation_Menu_Button_Item">
+                        <img class='Header_PageNavigation_Menu_Button_Item_Icon' src='Assets/Icons/placeholder.png' draggable='false' loading='lazy'/>
+                        <p class="Header_PageNavigation_Menu_Button_Item_Text">
+                            Home
+                        </p>
+                    </div>
+                    <div class="Header_PageNavigation_Menu_Button_Item">
+                        <img class='Header_PageNavigation_Menu_Button_Item_Icon' src='Assets/Icons/placeholder.png' draggable='false' loading='lazy'/>
+                        <p class="Header_PageNavigation_Menu_Button_Item_Text">
+                            Home
+                        </p>
+                    </div>
+                    <div class="Header_PageNavigation_Menu_Button_Item">
+                        <img class='Header_PageNavigation_Menu_Button_Item_Icon' src='Assets/Icons/placeholder.png' draggable='false' loading='lazy'/>
+                        <p class="Header_PageNavigation_Menu_Button_Item_Text">
+                            Home
+                        </p>
+                    </div>
+                    <div class="Header_PageNavigation_Menu_Button_Item">
+                        <img class='Header_PageNavigation_Menu_Button_Item_Icon' src='Assets/Icons/placeholder.png' draggable='false' loading='lazy'/>
+                        <p class="Header_PageNavigation_Menu_Button_Item_Text">
+                            Home
+                        </p>
+                    </div>
+                    <div class="Header_PageNavigation_Menu_Button_Item">
+                        <img class='Header_PageNavigation_Menu_Button_Item_Icon' src='Assets/Icons/placeholder.png' draggable='false' loading='lazy'/>
+                        <p class="Header_PageNavigation_Menu_Button_Item_Text">
+                            Home
+                        </p>
+                    </div>
+                    <div class="Header_PageNavigation_Menu_Button_Item">
+                        <img class='Header_PageNavigation_Menu_Button_Item_Icon' src='Assets/Icons/placeholder.png' draggable='false' loading='lazy'/>
+                        <p class="Header_PageNavigation_Menu_Button_Item_Text">
+                            Home
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="Header_StatusTray_Menu" id="Header_StatusTray_Menu" State="Inactive">
+            <img class='Header_StatusTray_Menu_Close' src='Assets/Icons/icon_close.png' draggable='false' loading='lazy' onclick="Header_Toggle_StatusTray()"/>
+            <div class="Header_StatusTray_Menu_Clock Header_StatusTray_Menu_Content">
+                <h1 class="Header_StatusTray_Menu_Clock_Clock" id="Header_StatusTray_Menu_Clock_Clock">
+                    10:17 PM
+                </h1>
+                <p class="Header_StatusTray_Menu_Clock_Date" id="Header_StatusTray_Menu_Clock_Date">
+                    Sunday, 02/04/2024
+                </p>
+            </div>
+            <div class="Header_StatusTray_Menu_Battery Header_StatusTray_Menu_Content">
+                <h1 class="Header_StatusTray_Menu_Battery_Percentage" id="Header_StatusTray_Menu_Battery_Percentage">
+                    100%
+                </h1>
+                <p class="Header_StatusTray_Menu_Battery_Status" id="Header_StatusTray_Menu_Battery_Status">
+                    Fully charged
+                </p>
+            </div>
+            <div class="Header_StatusTray_Menu_InternetStatus Header_StatusTray_Menu_Content">
+                <h1 class="Header_StatusTray_Menu_InternetStatus_Status" id="Header_StatusTray_Menu_InternetStatus_Status">
+                    Connected
+                </h1>
+                <p class="Header_StatusTray_Menu_InternetStatus_Description" id="Header_StatusTray_Menu_InternetStatus_Description">
+                    You are connected to the internet. Features that require an internet connection will function properly.
+                </p>
+                <a href="https://fast.com" target="_blank">
+                    <div class="Header_PageNavigation_Menu_Button_Item General_Button_Primary">
+                        <img class='General_Button_Icon Header_PageNavigation_Menu_Button_Item_Icon' src='Assets/Icons/placeholder.png' draggable='false' loading='lazy' Position="Left"/>
+                        <p class="Header_PageNavigation_Menu_Button_Item_Text" style="color: var(--BG-Color-Button-Primary-Text);">
+                            Speedtest
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+    </div>
+    <div class="Header_SidebarToggle" id="Header_SidebarToggle" onclick="Sidebar_Toggle()">
+        <img class='Header_SidebarToggle_Icon' src='Assets/Icons/icon_hamburgermenu.png' draggable='false' loading='lazy' id="Header_SidebarToggle_Icon"/>
+    </div>
+    <header class="Header" id="Header" Style_Margin_SidebarToggle="Enabled" Style_Margin_Sidebar="Enabled">
+		<div class="Header_PageNavigation" id="Header_PageNavigation" onclick="Header_Toggle_PageNavigation()">
+			<img src="Assets/Icons/favicon.png" class="Header_PageNavigation_Icon" id="Header_PageNavigation_Icon"></img>
+			<h2 class="Header_PageNavigation_Title" id="Header_PageNavigation_Title">
+				Home
+			</h2>
+		</div>
+		<div class="Header_Content" id="pageElement_Header_Actions">
+            <h3 class="Header_Content_Title" id="pageElement_Header_Title">
+                Tab name
+            </h3>
+		</div>
+		<div class="Header_StatusTray" id="Header_StatusTray" onclick="Header_Toggle_StatusTray()">
+			<div class="Header_StatusTray_Clock" id="Header_StatusTray_Clock">
+				<h1 class="Header_StatusTray_Clock_Time" id="Header_StatusTray_Clock_Time">
+					6:05 PM
+                </h1>
+			</div>
+			<div class="Header_StatusTray_Battery" id="Header_StatusTray_Battery">
+				<h1 class="Header_StatusTray_Battery_Percentage" id="Header_StatusTray_Battery_Percentage">
+					57%
+                </h1>
+			</div>
+			<div class="Header_StatusTray_Extras" id="Header_StatusTray_Extras">
+                <img class='Header_StatusTray_Extras_Icon' src='Assets/Icons/icon_wifi_offline.png' draggable='false' loading='lazy' id="Header_StatusTray_Extras_InternetStatus"/>
+			</div>
+		</div>
+    </header>
+    <header class="Ribbon" id="Ribbon" Style_Margin_Sidebar="Enabled" Style_Margin_Header="Enabled">
+        <div class="Ribbon_Section" id="Ribbon_Settings">
+			<div class="Ribbon_Section_Item" onclick="Settings_Save()">
+				<img class="Ribbon_Section_Item_Icon" src="Assets/Icons/iconNew_save.png" />
+				<p class="Ribbon_Section_Item_Text">
+					Save changes
+				</p>
+			</div>
+            <div class="Ribbon_Section_Item" onclick="Subwindows_Open('Settings_Import')">
+				<img class="Ribbon_Section_Item_Icon" src="Assets/Icons/iconNew_download.png" />
+				<p class="Ribbon_Section_Item_Text">
+					Import settings
+				</p>
+			</div>
+            <div class="Ribbon_Section_Item" onclick="Subwindows_Open('Settings_Export')">
+				<img class="Ribbon_Section_Item_Icon" src="Assets/Icons/icon_output.png" />
+				<p class="Ribbon_Section_Item_Text">
+					Export settings
+				</p>
+			</div>
+		</div>
+        <div class="Ribbon_Section" id="Ribbon_Behavior">
+			<div class="Ribbon_Section_Item">
+				<img class="Ribbon_Section_Item_Icon" src="Assets/Icons/placeholder.png" />
+				<p class="Ribbon_Section_Item_Text">
+					Button 2
+				</p>
+			</div>
+			<div class="Ribbon_Section_Item">
+				<img class="Ribbon_Section_Item_Icon" src="Assets/Icons/placeholder.png" />
+				<p class="Ribbon_Section_Item_Text">
+					Button 2
+				</p>
+			</div>
+            <div class="Ribbon_Section_Item">
+				<img class="Ribbon_Section_Item_Icon" src="Assets/Icons/placeholder.png" />
+				<p class="Ribbon_Section_Item_Text">
+					Button 2
+				</p>
+			</div>
+		</div>
+    </header>
+    <div class="Tabs_Vertical_Container_Selector Sidebar" id="Sidebar" State="Collapsed" Style_Margin_Header="Enabled">
+        <div class="Tabs_Vertical_Container_Selector_Item" id="Appearance" onclick="Tabs_ChangeTab(this.id, 'Vertical')" Tabs_Tab_Title="Appearance" Tabs_Tab_Target_Container="Content" Tabs_Tab_Target_Tab="tab_Appearance" Tabs_UseRibbon="true" Tabs_Tab_Target_Ribbon="Ribbon_Settings" Tabs_UseHeaderTitle="true" State="Selected">
+			<div class="Tabs_Vertical_Container_Selector_Item_Icon">
+				<img src="Assets/Icons/icon_customize.png" class="Tabs_Vertical_Container_Selector_Item_Icon_Icon"/>
+			</div>
+			<p class="Tabs_Vertical_Container_Selector_Item_Text">
+				Appearance
+			</p>
+		</div>
+		<div class="Tabs_Vertical_Container_Selector_Item" id="Behavior" onclick="Tabs_ChangeTab(this.id, 'Vertical')" Tabs_Tab_Title="Behavior" Tabs_Tab_Target_Container="Content" Tabs_Tab_Target_Tab="tab_Behavior" Tabs_UseRibbon="true" Tabs_Tab_Target_Ribbon="Ribbon_Settings" Tabs_UseHeaderTitle="true" Tabs_UseFullContainer="false">
+			<div class="Tabs_Vertical_Container_Selector_Item_Icon">
+				<img src="Assets/Icons/icon_softwareUpdate.png" class="Tabs_Vertical_Container_Selector_Item_Icon_Icon"/>
+			</div>
+			<p class="Tabs_Vertical_Container_Selector_Item_Text">
+				Behavior
+			</p>
+            
+		</div>
+    </div>
+    <div class="MainContent_Container" id="MainContent_Container">
+        <div class="MainContent_Container_Pusher" id="MainContent_Container_Pusher"></div>
+        <main class="MainContent" id="MainContent" Style_Margin_Header="Enabled" Style_Margin_Ribbon="Enabled" Style_Margin_Sidebar="Enabled">
+            <div class="Content" id="Content" Style_Margin="Enabled" Tabs_CurrentTab="">
+                <div class="Tab_Container_Content_Item Content_Item" id="tab_Appearance">
+                    <div class="Accordion" id="Accordion_Presets">
+                        <div class="Accordion_Title" onclick="Accordion_Toggle(this.parentNode.id)">
+                            <h2 class="Accordion_Title_Text">
+                                Presets
+                            </h2>
+                            <img class='Accordion_Title_Arrow' src='Assets/Icons/icon_downArrow.png' draggable='false' loading='lazy'/>
+                        </div>
+                        <div class="Accordion_Content" State="Expanded">
+                            <p class="General_Paragraph">
+                                Select a preset theme below.
+                            </p>
+                            <div class="Radio" id="Settings_Presets" Radio_ActiveButton="Settings_Presets_Dark">
+                                <div class="Radio_Button" id="Settings_Presets_Dark" onclick="Radio_Select(this.id)" State="Inactive">
+                                    <div class="Radio_Button_Indicator"></div>
+                                    Dark mode
+                                </div>
+                                <div class="Radio_Button" id="Settings_Presets_Light" onclick="Radio_Select(this.id)" State="Inactive">
+                                    <div class="Radio_Button_Indicator"></div>
+                                    Light mode
+                                </div>
+                            </div>                           
+                        </div>
+                    </div>
+                    <div class="Accordion" id="Accordion_Background">
+                        <div class="Accordion_Title" onclick="Accordion_Toggle(this.parentNode.id)">
+                            <h2 class="Accordion_Title_Text">
+                                Backgrounds
+                            </h2>
+                            <img class='Accordion_Title_Arrow' src='Assets/Icons/icon_downArrow.png' draggable='false' loading='lazy'/>
+                        </div>
+                        <div class="Accordion_Content" State="Expanded">
+                            <p class="General_Paragraph">
+                                Select backgrounds for different screens and control whether they appear on certain screens.
+                            </p>
+                            <div class="Toggle" id="Settings_Backgrounds_Wallpaper_Blur" onclick="Buttons_Toggle(this.id)" State="Active">
+                                <div class="Toggle_Indicator"></div>
+                                Blur wallpaper
+                            </div>
+                            <div class="Toggle" id="Settings_Backgrounds_Wallpaper_Darken" onclick="Buttons_Toggle(this.id)" State="Active">
+                                <div class="Toggle_Indicator"></div>
+                                Darken wallpaper
+                            </div>
+                            <div class="Toggle" id="Settings_Backgrounds_Wallpaper_Enable" onclick="Buttons_Toggle(this.id)" State="Active">
+                                <div class="Toggle_Indicator"></div>
+                                Enable wallpaper
+                            </div>
+                            <div class="Toggle" id="Settings_Backgrounds_ClockScreen_Enable" onclick="Buttons_Toggle(this.id)" State="Active">
+                                <div class="Toggle_Indicator"></div>
+                                Enable clock screen background
+                            </div>
+                            <div class="Settings_Backgrounds">
+                                <button class="General_Button Settings_Backgrounds_Item" onclick="Subwindows_Open('Settings_Backgrounds_Wallpaper')">
+                                    <div class="Settings_Backgrounds_Item_Preview">
+                                        <img src="https://elmerf5445.github.io/ERUMA-UI/Assets/Background/ERUMA_UI_3.png" class="Settings_Backgrounds_Item_Preview_Image" id="Settings_Backgrounds_Item_Preview_Image_Wallpaper" loading="lazy">
+                                    </div>
+                                    <h4 class="Settings_Backgrounds_Item_Title">
+                                        Wallpaper
+                                    </h4>
+                                </button>
+                                <button class="General_Button Settings_Backgrounds_Item" onclick="Subwindows_Open('Settings_Backgrounds_ClockScreen')">
+                                    <div class="Settings_Backgrounds_Item_Preview">
+                                        <img src="https://elmerf5445.github.io/ERUMA-UI/Assets/Background/ERUMA_UI_3.png" class="Settings_Backgrounds_Item_Preview_Image" id="Settings_Backgrounds_Item_Preview_Image_ClockScreen" loading="lazy">
+                                    </div>
+                                    <h4 class="Settings_Backgrounds_Item_Title">
+                                        Clock Screen
+                                    </h4>
+                                </button>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="Accordion" id="Accordion_Colors" Display="none">
+                        <div class="Accordion_Title" onclick="Accordion_Toggle(this.parentNode.id)">
+                            <h2 class="Accordion_Title_Text">
+                                Color pallete
+                            </h2>
+                            <img class='Accordion_Title_Arrow' src='Assets/Icons/icon_downArrow.png' draggable='false' loading='lazy'/>
+                        </div>
+                        <div class="Accordion_Content" State="Expanded">
+                            <p class="General_Paragraph">
+                                Change the color pallete of the system (this overrides the pallete of the individual programs.)
+                            </p>
+                            <div class="Settings_Colors">
+                                <div class="Settings_Colors_Item">
+                                    <label class="Input_Label" for="IDOfInputHere">
+                                        Accent-Color: 
+                                    </label>
+                                    <input type="color" class="Input_Color" id="IDOfInputHere" autocomplete="off"/>
+                                    <input type="text" class="Input_Text" id="IDOfInputHere" autocomplete="off" placeholder="Hex value"/>
+                                </div>
+                                <div class="Settings_Colors_Item">
+                                    <label class="Input_Label" for="IDOfInputHere">
+                                        Accent-Color-Hover: 
+                                    </label>
+                                    <input type="color" class="Input_Color" id="IDOfInputHere" autocomplete="off"/>
+                                    <input type="text" class="Input_Text" id="IDOfInputHere" autocomplete="off" placeholder="Hex value"/>
+                                </div>
+                                <div class="Settings_Colors_Item">
+                                    <label class="Input_Label" for="IDOfInputHere">
+                                        Accent-Color-Focus: 
+                                    </label>
+                                    <input type="color" class="Input_Color" id="IDOfInputHere" autocomplete="off"/>
+                                    <input type="text" class="Input_Text" id="IDOfInputHere" autocomplete="off" placeholder="Hex value"/>
+                                </div>
+                                <div class="Settings_Colors_Item">
+                                    <label class="Input_Label" for="IDOfInputHere">
+                                        Text-Color: 
+                                    </label>
+                                    <input type="color" class="Input_Color" id="IDOfInputHere" autocomplete="off"/>
+                                    <input type="text" class="Input_Text" id="IDOfInputHere" autocomplete="off" placeholder="Hex value"/>
+                                </div>
+                                <div class="Settings_Colors_Item">
+                                    <label class="Input_Label" for="IDOfInputHere">
+                                        Color-Dividers: 
+                                    </label>
+                                    <input type="color" class="Input_Color" id="IDOfInputHere" autocomplete="off"/>
+                                    <input type="text" class="Input_Text" id="IDOfInputHere" autocomplete="off" placeholder="Hex value"/>
+                                </div>
+                                <div class="Settings_Colors_Item">
+                                    <label class="Input_Label" for="IDOfInputHere">
+                                        BG-Color-General: 
+                                    </label>
+                                    <input type="color" class="Input_Color" id="IDOfInputHere" autocomplete="off"/>
+                                    <input type="text" class="Input_Text" id="IDOfInputHere" autocomplete="off" placeholder="Hex value"/>
+                                </div>
+                                <div class="Settings_Colors_Item">
+                                    <label class="Input_Label" for="IDOfInputHere">
+                                        BG-Color-General-Menus: 
+                                    </label>
+                                    <input type="color" class="Input_Color" id="IDOfInputHere" autocomplete="off"/>
+                                    <input type="text" class="Input_Text" id="IDOfInputHere" autocomplete="off" placeholder="Hex value"/>
+                                </div>
+                                <div class="Settings_Colors_Item">
+                                    <label class="Input_Label" for="IDOfInputHere">
+                                        BG-Color-MainView: 
+                                    </label>
+                                    <input type="color" class="Input_Color" id="IDOfInputHere" autocomplete="off"/>
+                                    <input type="text" class="Input_Text" id="IDOfInputHere" autocomplete="off" placeholder="Hex value"/>
+                                </div>
+                                <div class="Settings_Colors_Item">
+                                    <label class="Input_Label" for="IDOfInputHere">
+                                        BG-Color-LoadingScreen: 
+                                    </label>
+                                    <input type="color" class="Input_Color" id="IDOfInputHere" autocomplete="off"/>
+                                    <input type="text" class="Input_Text" id="IDOfInputHere" autocomplete="off" placeholder="Hex value"/>
+                                </div>
+                                <div class="Settings_Colors_Item">
+                                    <label class="Input_Label" for="IDOfInputHere">
+                                        BG-Color-LoadingScreen-Splash-NameSpace: 
+                                    </label>
+                                    <input type="color" class="Input_Color" id="IDOfInputHere" autocomplete="off"/>
+                                    <input type="text" class="Input_Text" id="IDOfInputHere" autocomplete="off" placeholder="Hex value"/>
+                                </div>
+                                <div class="Settings_Colors_Item">
+                                    <label class="Input_Label" for="IDOfInputHere">
+                                        BG-Color-LoadingScreen-Splash-Loader: 
+                                    </label>
+                                    <input type="color" class="Input_Color" id="IDOfInputHere" autocomplete="off"/>
+                                    <input type="text" class="Input_Text" id="IDOfInputHere" autocomplete="off" placeholder="Hex value"/>
+                                </div>
+                                <div class="Settings_Colors_Item">
+                                    <label class="Input_Label" for="IDOfInputHere">
+                                        BG-Color-Hover: 
+                                    </label>
+                                    <input type="color" class="Input_Color" id="IDOfInputHere" autocomplete="off"/>
+                                    <input type="text" class="Input_Text" id="IDOfInputHere" autocomplete="off" placeholder="Hex value"/>
+                                </div>
+                                <div class="Settings_Colors_Item">
+                                    <label class="Input_Label" for="IDOfInputHere">
+                                        BG-Color-Focus: 
+                                    </label>
+                                    <input type="color" class="Input_Color" id="IDOfInputHere" autocomplete="off"/>
+                                    <input type="text" class="Input_Text" id="IDOfInputHere" autocomplete="off" placeholder="Hex value"/>
+                                </div>
+                                <div class="Settings_Colors_Item">
+                                    <label class="Input_Label" for="IDOfInputHere">
+                                        BG-Color-Overlay-Header: 
+                                    </label>
+                                    <input type="color" class="Input_Color" id="IDOfInputHere" autocomplete="off"/>
+                                    <input type="text" class="Input_Text" id="IDOfInputHere" autocomplete="off" placeholder="Hex value"/>
+                                </div>
+
+                                <div class="Settings_Colors_Item">
+                                    <label class="Input_Label" for="IDOfInputHere">
+                                        BG-Color-Overlay-Sidebar: 
+                                    </label>
+                                    <input type="color" class="Input_Color" id="IDOfInputHere" autocomplete="off"/>
+                                    <input type="text" class="Input_Text" id="IDOfInputHere" autocomplete="off" placeholder="Hex value"/>
+                                </div>
+
+                                <div class="Settings_Colors_Item">
+                                    <label class="Input_Label" for="IDOfInputHere">
+                                        BG-Color-Overlay-Ribbon: 
+                                    </label>
+                                    <input type="color" class="Input_Color" id="IDOfInputHere" autocomplete="off"/>
+                                    <input type="text" class="Input_Text" id="IDOfInputHere" autocomplete="off" placeholder="Hex value"/>
+                                </div>
+
+                                <div class="Settings_Colors_Item">
+                                    <label class="Input_Label" for="IDOfInputHere">
+                                        BG-Color-Subwindows: 
+                                    </label>
+                                    <input type="color" class="Input_Color" id="IDOfInputHere" autocomplete="off"/>
+                                    <input type="text" class="Input_Text" id="IDOfInputHere" autocomplete="off" placeholder="Hex value"/>
+                                </div>
+                                <!-- Primary buttons -->
+                                <div class="Settings_Colors_Item">
+                                    <label class="Input_Label" for="IDOfInputHere">
+                                        BG-Color-Button-Primary: 
+                                    </label>
+                                    <input type="color" class="Input_Color" id="IDOfInputHere" autocomplete="off"/>
+                                    <input type="text" class="Input_Text" id="IDOfInputHere" autocomplete="off" placeholder="Hex value"/>
+                                </div>
+                                <div class="Settings_Colors_Item">
+                                    <label class="Input_Label" for="IDOfInputHere">
+                                        BG-Color-Button-Primary-Text: 
+                                    </label>
+                                    <input type="color" class="Input_Color" id="IDOfInputHere" autocomplete="off"/>
+                                    <input type="text" class="Input_Text" id="IDOfInputHere" autocomplete="off" placeholder="Hex value"/>
+                                </div>
+                                <div class="Settings_Colors_Item">
+                                    <label class="Input_Label" for="IDOfInputHere">
+                                        BG-Color-Button-Primary-Border-Primary: 
+                                    </label>
+                                    <input type="color" class="Input_Color" id="IDOfInputHere" autocomplete="off"/>
+                                    <input type="text" class="Input_Text" id="IDOfInputHere" autocomplete="off" placeholder="Hex value"/>
+                                </div>
+                                <div class="Settings_Colors_Item">
+                                    <label class="Input_Label" for="IDOfInputHere">
+                                        BG-Color-Button-Primary-Border-Secondary: 
+                                    </label>
+                                    <input type="color" class="Input_Color" id="IDOfInputHere" autocomplete="off"/>
+                                    <input type="text" class="Input_Text" id="IDOfInputHere" autocomplete="off" placeholder="Hex value"/>
+                                </div>
+
+                                <div class="Settings_Colors_Item">
+                                    <label class="Input_Label" for="IDOfInputHere">
+                                        BG-Color-Button-Primary-Hover: 
+                                    </label>
+                                    <input type="color" class="Input_Color" id="IDOfInputHere" autocomplete="off"/>
+                                    <input type="text" class="Input_Text" id="IDOfInputHere" autocomplete="off" placeholder="Hex value"/>
+                                </div>
+                                <div class="Settings_Colors_Item">
+                                    <label class="Input_Label" for="IDOfInputHere">
+                                        BG-Color-Button-Primary-Text-Hover: 
+                                    </label>
+                                    <input type="color" class="Input_Color" id="IDOfInputHere" autocomplete="off"/>
+                                    <input type="text" class="Input_Text" id="IDOfInputHere" autocomplete="off" placeholder="Hex value"/>
+                                </div>
+                                <div class="Settings_Colors_Item">
+                                    <label class="Input_Label" for="IDOfInputHere">
+                                        BG-Color-Button-Primary-Border-Primary-Hover: 
+                                    </label>
+                                    <input type="color" class="Input_Color" id="IDOfInputHere" autocomplete="off"/>
+                                    <input type="text" class="Input_Text" id="IDOfInputHere" autocomplete="off" placeholder="Hex value"/>
+                                </div>
+                                <div class="Settings_Colors_Item">
+                                    <label class="Input_Label" for="IDOfInputHere">
+                                        BG-Color-Button-Primary-Border-Secondary-Hover: 
+                                    </label>
+                                    <input type="color" class="Input_Color" id="IDOfInputHere" autocomplete="off"/>
+                                    <input type="text" class="Input_Text" id="IDOfInputHere" autocomplete="off" placeholder="Hex value"/>
+                                </div>
+
+                                <div class="Settings_Colors_Item">
+                                    <label class="Input_Label" for="IDOfInputHere">
+                                        BG-Color-Button-Primary-Focus: 
+                                    </label>
+                                    <input type="color" class="Input_Color" id="IDOfInputHere" autocomplete="off"/>
+                                    <input type="text" class="Input_Text" id="IDOfInputHere" autocomplete="off" placeholder="Hex value"/>
+                                </div>
+                                <div class="Settings_Colors_Item">
+                                    <label class="Input_Label" for="IDOfInputHere">
+                                        BG-Color-Button-Primary-Text-Focus: 
+                                    </label>
+                                    <input type="color" class="Input_Color" id="IDOfInputHere" autocomplete="off"/>
+                                    <input type="text" class="Input_Text" id="IDOfInputHere" autocomplete="off" placeholder="Hex value"/>
+                                </div>
+                                <div class="Settings_Colors_Item">
+                                    <label class="Input_Label" for="IDOfInputHere">
+                                        BG-Color-Button-Primary-Border-Primary-Focus: 
+                                    </label>
+                                    <input type="color" class="Input_Color" id="IDOfInputHere" autocomplete="off"/>
+                                    <input type="text" class="Input_Text" id="IDOfInputHere" autocomplete="off" placeholder="Hex value"/>
+                                </div>
+                                <div class="Settings_Colors_Item">
+                                    <label class="Input_Label" for="IDOfInputHere">
+                                        BG-Color-Button-Primary-Border-Secondary-Focus: 
+                                    </label>
+                                    <input type="color" class="Input_Color" id="IDOfInputHere" autocomplete="off"/>
+                                    <input type="text" class="Input_Text" id="IDOfInputHere" autocomplete="off" placeholder="Hex value"/>
+                                </div>
+
+                                <!-- Secondary buttons -->
+                                <div class="Settings_Colors_Item">
+                                    <label class="Input_Label" for="IDOfInputHere">
+                                        BG-Color-Button-Secondary: 
+                                    </label>
+                                    <input type="color" class="Input_Color" id="IDOfInputHere" autocomplete="off"/>
+                                    <input type="text" class="Input_Text" id="IDOfInputHere" autocomplete="off" placeholder="Hex value"/>
+                                </div>
+                                <div class="Settings_Colors_Item">
+                                    <label class="Input_Label" for="IDOfInputHere">
+                                        BG-Color-Button-Secondary-Text: 
+                                    </label>
+                                    <input type="color" class="Input_Color" id="IDOfInputHere" autocomplete="off"/>
+                                    <input type="text" class="Input_Text" id="IDOfInputHere" autocomplete="off" placeholder="Hex value"/>
+                                </div>
+                                <div class="Settings_Colors_Item">
+                                    <label class="Input_Label" for="IDOfInputHere">
+                                        BG-Color-Button-Secondary-Border-Primary: 
+                                    </label>
+                                    <input type="color" class="Input_Color" id="IDOfInputHere" autocomplete="off"/>
+                                    <input type="text" class="Input_Text" id="IDOfInputHere" autocomplete="off" placeholder="Hex value"/>
+                                </div>
+                                <div class="Settings_Colors_Item">
+                                    <label class="Input_Label" for="IDOfInputHere">
+                                        BG-Color-Button-Secondary-Border-Secondary: 
+                                    </label>
+                                    <input type="color" class="Input_Color" id="IDOfInputHere" autocomplete="off"/>
+                                    <input type="text" class="Input_Text" id="IDOfInputHere" autocomplete="off" placeholder="Hex value"/>
+                                </div>
+
+                                <div class="Settings_Colors_Item">
+                                    <label class="Input_Label" for="IDOfInputHere">
+                                        BG-Color-Button-Secondary-Hover: 
+                                    </label>
+                                    <input type="color" class="Input_Color" id="IDOfInputHere" autocomplete="off"/>
+                                    <input type="text" class="Input_Text" id="IDOfInputHere" autocomplete="off" placeholder="Hex value"/>
+                                </div>
+                                <div class="Settings_Colors_Item">
+                                    <label class="Input_Label" for="IDOfInputHere">
+                                        BG-Color-Button-Secondary-Text-Hover: 
+                                    </label>
+                                    <input type="color" class="Input_Color" id="IDOfInputHere" autocomplete="off"/>
+                                    <input type="text" class="Input_Text" id="IDOfInputHere" autocomplete="off" placeholder="Hex value"/>
+                                </div>
+                                <div class="Settings_Colors_Item">
+                                    <label class="Input_Label" for="IDOfInputHere">
+                                        BG-Color-Button-Secondary-Border-Primary-Hover: 
+                                    </label>
+                                    <input type="color" class="Input_Color" id="IDOfInputHere" autocomplete="off"/>
+                                    <input type="text" class="Input_Text" id="IDOfInputHere" autocomplete="off" placeholder="Hex value"/>
+                                </div>
+                                <div class="Settings_Colors_Item">
+                                    <label class="Input_Label" for="IDOfInputHere">
+                                        BG-Color-Button-Secondary-Border-Secondary-Hover: 
+                                    </label>
+                                    <input type="color" class="Input_Color" id="IDOfInputHere" autocomplete="off"/>
+                                    <input type="text" class="Input_Text" id="IDOfInputHere" autocomplete="off" placeholder="Hex value"/>
+                                </div>
+
+                                <div class="Settings_Colors_Item">
+                                    <label class="Input_Label" for="IDOfInputHere">
+                                        BG-Color-Button-Secondary-Focus: 
+                                    </label>
+                                    <input type="color" class="Input_Color" id="IDOfInputHere" autocomplete="off"/>
+                                    <input type="text" class="Input_Text" id="IDOfInputHere" autocomplete="off" placeholder="Hex value"/>
+                                </div>
+                                <div class="Settings_Colors_Item">
+                                    <label class="Input_Label" for="IDOfInputHere">
+                                        BG-Color-Button-Secondary-Text-Focus: 
+                                    </label>
+                                    <input type="color" class="Input_Color" id="IDOfInputHere" autocomplete="off"/>
+                                    <input type="text" class="Input_Text" id="IDOfInputHere" autocomplete="off" placeholder="Hex value"/>
+                                </div>
+                                <div class="Settings_Colors_Item">
+                                    <label class="Input_Label" for="IDOfInputHere">
+                                        BG-Color-Button-Secondary-Border-Primary-Focus: 
+                                    </label>
+                                    <input type="color" class="Input_Color" id="IDOfInputHere" autocomplete="off"/>
+                                    <input type="text" class="Input_Text" id="IDOfInputHere" autocomplete="off" placeholder="Hex value"/>
+                                </div>
+                                <div class="Settings_Colors_Item">
+                                    <label class="Input_Label" for="IDOfInputHere">
+                                        BG-Color-Button-Secondary-Border-Secondary-Focus: 
+                                    </label>
+                                    <input type="color" class="Input_Color" id="IDOfInputHere" autocomplete="off"/>
+                                    <input type="text" class="Input_Text" id="IDOfInputHere" autocomplete="off" placeholder="Hex value"/>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="Tab_Container_Content_Item Content_Item" id="tab_Behavior">
+                    <div class="Accordion" id="Accordion_Effects">
+                        <div class="Accordion_Title" onclick="Accordion_Toggle(this.parentNode.id)">
+                            <h2 class="Accordion_Title_Text">
+                                Effects
+                            </h2>
+                            <img class='Accordion_Title_Arrow' src='Assets/Icons/icon_downArrow.png' draggable='false' loading='lazy'/>
+                        </div>
+                        <div class="Accordion_Content" State="Expanded">
+                            <p class="General_Paragraph">
+                                Control specific visual effects.
+                            </p>
+                            <div class="Toggle" id="Settings_Effects_Blur" onclick="Buttons_Toggle(this.id)" State="Active">
+                                <div class="Toggle_Indicator"></div>
+                                Blur effects
+                            </div>
+                            <div class="Toggle" id="Settings_Effects_Animations" onclick="Buttons_Toggle(this.id)" State="Active" Display="none">
+                                <div class="Toggle_Indicator"></div>
+                                Animations
+                            </div>
+                            <div class="Toggle" id="Settings_Effects_Transitions" onclick="Buttons_Toggle(this.id)" State="Active">
+                                <div class="Toggle_Indicator"></div>
+                                Transition animations
+                            </div>
+                            <div class="Toggle" id="Settings_Effects_SmoothScrolling" onclick="Buttons_Toggle(this.id)" State="Active">
+                                <div class="Toggle_Indicator"></div>
+                                Smooth scrolling
+                            </div>
+                        </div>
+                    </div>
+                    <div class="Accordion" id="Accordion_Battery" Display="none">
+                        <div class="Accordion_Title" onclick="Accordion_Toggle(this.parentNode.id)">
+                            <h2 class="Accordion_Title_Text">
+                                Battery
+                            </h2>
+                            <img class='Accordion_Title_Arrow' src='Assets/Icons/icon_downArrow.png' draggable='false' loading='lazy'/>
+                        </div>
+                        <div class="Accordion_Content" State="Expanded">
+                            <p class="General_Paragraph">
+                                Settings related to battery.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="Tab_Container_Content_Item Content_Item" id="tab_TabIDHere3">
+                    <h1 class="General_Title">
+                        Tab 3
+                    </h1>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+</body>
+</html>

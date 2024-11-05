@@ -1,0 +1,345 @@
+{
+    "App_Info": {
+        "Title": "ERUMA UI",
+        "Version_Title": "1.0",
+        "Version_Number": "1.0",
+        "Version_CompilationDate": "18 August 2024",
+        "Copyright_Title": "Content By ElmerF 2024",
+        "Copyright_Icon": "Assets/Icons/ContentByElmerF.png",
+        "Key_Prefix": "ERUMAUI"
+    },
+    "App_Properties": [
+        {
+            "Page_File": "App_Template.html",
+            "Page_Property": {
+                "TitleBar_Title": "ERUMA UI",
+                "Page": {
+                    "Title": "Template",
+                    "Icon": "Assets/Icons/favicon.png",
+                    "MainView": {
+                        "UseFullContainer": false
+                    }
+                },
+                "Header": {
+                    "Title": "Template Page",
+                    "Icon": "Assets/Icons/favicon.png",
+                    "Menu_Contents": {
+                        "PageNavigation": [
+                            {
+                                "Title": "App Template",
+                                "Link": "Pages/App_Template.html",
+                                "Icon": "Assets/Icons/icon_home.png"
+                            },
+                            {
+                                "Title": "Settings",
+                                "Link": "Pages/ERUMAUI_Settings.html",
+                                "Icon": "Assets/Icons/icon_settings.png"
+                            },
+                            {
+                                "Title": "Template 2",
+                                "Link": "Pages/App_Template copy.html",
+                                "Icon": "Assets/Icons/icon_settings.png"
+                            }
+                            
+                        ],
+                        "Actions": [
+                            {
+                                "Title": "Action 1",
+                                "Link": null,
+                                "Icon": "Assets/Icons/icon_home.png",
+                                "OnclickFunction": null,
+                                "CloseAfterClick": false
+                            },
+                            {
+                                "Title": "Action 2",
+                                "Link": null,
+                                "Icon": "Assets/Icons/icon_home.png",
+                                "OnclickFunction": null,
+                                "CloseAfterClick": false
+                            }
+                        ]
+                    }
+                },
+                "Sidebar": {
+                    "HideWhenCollapsed": false,
+                    "PushContentWhenExpanded": false,
+                    "Width_Expanded": 300,
+                    "Width_Collapsed": 40
+                },
+                "LoadingScreen": {
+                    "Configuration": "Splash"
+                },
+                "Features": {
+                    "Header": true,
+                    "Sidebar": true,
+                    "Sidebar_Elements": {
+                        "Toggle": true,
+                        "Container": true,
+                        "Tabs": false
+                    },
+                    "ClockScreen": true,
+                    "LoadingScreen": true,
+                    "StatusBar": true,
+                    "StatusBar_Elements": {
+                        "EnableAll": true,
+                        "Clock": true,
+                        "Battery": true,
+                        "Connection": true
+                    },
+                    "Ribbon": true,
+                    "Toasts": true,
+                    "Projects": true
+                }
+            }
+        },
+        {
+            "Page_File": "ERUMAUI_Settings.html",
+            "Page_Property": {
+                "TitleBar_Title": "ERUMA UI",
+                "Page": {
+                    "Title": "Settings",
+                    "Icon": "Assets/Icons/icon_settings.png",
+                    "MainView": {
+                        "UseFullContainer": false
+                    }
+                },
+                "Header": {
+                    "Title": "ERUMA UI Settings",
+                    "Icon": "Assets/Icons/icon_settings.png",
+                    "Menu_Contents": {
+                        "PageNavigation": [
+                            
+                            
+                        ],
+                        "Actions": [
+                            {
+                                "Title": "Back",
+                                "Link": null,
+                                "Icon": "Assets/Icons/icon_leftArrow.png",
+                                "OnclickFunction": "history.back()",
+                                "CloseAfterClick": false
+                            },
+                            {
+                                "Title": "Save",
+                                "Link": null,
+                                "Icon": "Assets/Icons/iconNew_save.png",
+                                "OnclickFunction": "Settings_Save()",
+                                "CloseAfterClick": false
+                            },
+                            {
+                                "Title": "Import settings",
+                                "Link": null,
+                                "Icon": "Assets/Icons/iconNew_download.png",
+                                "OnclickFunction": "Subwindows_Open('Settings_Import')",
+                                "CloseAfterClick": true
+                            },
+                            {
+                                "Title": "Export settings",
+                                "Link": null,
+                                "Icon": "Assets/Icons/icon_output.png",
+                                "OnclickFunction": "Subwindows_Open('Settings_Export')",
+                                "CloseAfterClick": true
+                            }
+                        ]
+                    }
+                },
+                "Sidebar": {
+                    "HideWhenCollapsed": false,
+                    "PushContentWhenExpanded": false,
+                    "Width_Expanded": 300,
+                    "Width_Collapsed": 40
+                },
+                "LoadingScreen": {
+                    "Configuration": "Simple"
+                },
+                "Features": {
+                    "Header": true,
+                    "Sidebar": true,
+                    "Sidebar_Elements": {
+                        "Toggle": true,
+                        "Container": true,
+                        "Tabs": true
+                    },
+                    "ClockScreen": true,
+                    "LoadingScreen": true,
+                    "StatusBar": true,
+                    "StatusBar_Elements": {
+                        "EnableAll": true,
+                        "Clock": true,
+                        "Battery": true,
+                        "Connection": true
+                    },
+                    "Ribbon": true,
+                    "Toasts": true,
+                    "Projects": false
+                }
+            }
+        },
+        {
+            "Page_File": "ELISM24_Controls.html",
+            "Page_Property": {
+                "TitleBar_Title": "Word Genius",
+                "Page": {
+                    "Title": "Control Panel",
+                    "Icon": "Assets/Icons/icon_schedules.png",
+                    "MainView": {
+                        "UseFullContainer": true
+                    }
+                },
+                "Header": {
+                    "Title": "ELISM Timer",
+                    "Icon": "Assets/Icons/icon_settings.png",
+                    "Menu_Contents": {
+                        "PageNavigation": [
+                            
+                            
+                        ],
+                        "Actions": [
+                            {
+                                "Title": "Back",
+                                "Link": null,
+                                "Icon": "Assets/Icons/icon_leftArrow.png",
+                                "OnclickFunction": "history.back()",
+                                "CloseAfterClick": false
+                            },
+                            {
+                                "Title": "Save",
+                                "Link": null,
+                                "Icon": "Assets/Icons/iconNew_save.png",
+                                "OnclickFunction": "Settings_Save()",
+                                "CloseAfterClick": false
+                            },
+                            {
+                                "Title": "Import settings",
+                                "Link": null,
+                                "Icon": "Assets/Icons/iconNew_download.png",
+                                "OnclickFunction": "Subwindows_Open('Settings_Import')",
+                                "CloseAfterClick": true
+                            },
+                            {
+                                "Title": "Export settings",
+                                "Link": null,
+                                "Icon": "Assets/Icons/icon_output.png",
+                                "OnclickFunction": "Subwindows_Open('Settings_Export')",
+                                "CloseAfterClick": true
+                            }
+                        ]
+                    }
+                },
+                "Sidebar": {
+                    "HideWhenCollapsed": false,
+                    "PushContentWhenExpanded": false,
+                    "Width_Expanded": 300,
+                    "Width_Collapsed": 40
+                },
+                "LoadingScreen": {
+                    "Configuration": "Simple"
+                },
+                "Features": {
+                    "Header": true,
+                    "Sidebar": false,
+                    "Sidebar_Elements": {
+                        "Toggle": false,
+                        "Container": true,
+                        "Tabs": true
+                    },
+                    "ClockScreen": false,
+                    "LoadingScreen": true,
+                    "StatusBar": true,
+                    "StatusBar_Elements": {
+                        "EnableAll": true,
+                        "Clock": true,
+                        "Battery": true,
+                        "Connection": true
+                    },
+                    "Ribbon": true,
+                    "Toasts": true,
+                    "Projects": false
+                }
+            }
+        },
+        {
+            "Page_File": "ELISM24_Display.html",
+            "Page_Property": {
+                "TitleBar_Title": "English & Library & Information Services Month 2024",
+                "Page": {
+                    "Title": "Timer",
+                    "Icon": "Assets/Icons/icon_schedules.png",
+                    "MainView": {
+                        "UseFullContainer": true
+                    }
+                },
+                "Header": {
+                    "Title": "Word Genius Timer",
+                    "Icon": "Assets/Icons/icon_settings.png",
+                    "Menu_Contents": {
+                        "PageNavigation": [
+                            
+                            
+                        ],
+                        "Actions": [
+                            {
+                                "Title": "Back",
+                                "Link": null,
+                                "Icon": "Assets/Icons/icon_leftArrow.png",
+                                "OnclickFunction": "history.back()",
+                                "CloseAfterClick": false
+                            },
+                            {
+                                "Title": "Save",
+                                "Link": null,
+                                "Icon": "Assets/Icons/iconNew_save.png",
+                                "OnclickFunction": "Settings_Save()",
+                                "CloseAfterClick": false
+                            },
+                            {
+                                "Title": "Import settings",
+                                "Link": null,
+                                "Icon": "Assets/Icons/iconNew_download.png",
+                                "OnclickFunction": "Subwindows_Open('Settings_Import')",
+                                "CloseAfterClick": true
+                            },
+                            {
+                                "Title": "Export settings",
+                                "Link": null,
+                                "Icon": "Assets/Icons/icon_output.png",
+                                "OnclickFunction": "Subwindows_Open('Settings_Export')",
+                                "CloseAfterClick": true
+                            }
+                        ]
+                    }
+                },
+                "Sidebar": {
+                    "HideWhenCollapsed": false,
+                    "PushContentWhenExpanded": false,
+                    "Width_Expanded": 300,
+                    "Width_Collapsed": 40
+                },
+                "LoadingScreen": {
+                    "Configuration": "Simple"
+                },
+                "Features": {
+                    "Header": false,
+                    "Sidebar": false,
+                    "Sidebar_Elements": {
+                        "Toggle": false,
+                        "Container": true,
+                        "Tabs": true
+                    },
+                    "ClockScreen": false,
+                    "LoadingScreen": true,
+                    "StatusBar": false,
+                    "StatusBar_Elements": {
+                        "EnableAll": true,
+                        "Clock": true,
+                        "Battery": true,
+                        "Connection": true
+                    },
+                    "Ribbon": false,
+                    "Toasts": true,
+                    "Projects": false
+                }
+            }
+        }
+    ]
+}

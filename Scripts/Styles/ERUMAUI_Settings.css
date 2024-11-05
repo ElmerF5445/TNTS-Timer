@@ -1,0 +1,79 @@
+.Settings_Backgrounds{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.Settings_Backgrounds_Item{
+    width: 350px;
+    height: 250px;
+    display: grid;
+    grid-template-rows: auto auto;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.Settings_Backgrounds_Item_Preview{
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.Settings_Backgrounds_Item_Preview_Image{
+    width: 100%;
+    object-fit: contain;
+    aspect-ratio: 16/9;
+}
+
+.Settings_Backgrounds_Item_Title{
+    font-family: var(--Text-Font-Primary);
+    color: var(--Text-Color);
+    margin: 0;
+}
+
+.Settings_Backgrounds_Wallpaper_Contents{
+    display: grid;
+    grid-template-areas: 
+        "Preview Preview"
+        "URL Check"
+    ;
+    grid-template-columns: 1fr 125px;
+    grid-area: 10px;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.Settings_Backgrounds_Wallpaper_Contents > div{
+    grid-area: Preview;
+}
+
+.Settings_Backgrounds_Wallpaper_Contents > form{
+    grid-area: URL;
+}
+
+.Settings_Backgrounds_Wallpaper_Contents > button{
+    grid-area: Check;
+    height: auto;
+}
+
+.Settings_Colors{
+    display: flex;
+    flex-direction: column;
+}
+
+.Settings_Colors_Item{
+    display: grid;
+    grid-template-columns: 1fr 50px 1fr;
+    grid-gap: 10px;
+    align-items: center;
+    justify-content: center;
+    /* margin-bottom: 10px; */
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.Settings_Colors_Item:nth-child(odd){
+    background-color: var(--BG-Color-Button-Secondary-Focus);
+}
+
+.Settings_Colors_Item > label{
+    text-align: right;
+}

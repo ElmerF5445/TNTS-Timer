@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id="Page_Title">
+        App by ElmerF
+    </title>
+    <base href="../">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link rel="stylesheet" href="Scripts/Styles/App_Main.css">
+    <link rel="icon" type="image/png" href="Assets/Icons/favicon.png" sizes="96x96" id="Page_Favicon">
+</head>
+<body>
+    <!-- <script src="Scripts/Javascript/App_Main.js"></script> -->
+    <script src="Scripts/Javascript/FileSaver.js" defer></script>
+    <script src="Scripts/Javascript/App_Javascript_Debugging.js" defer></script>
+    <script src="Scripts/Javascript/App_Javascript_ERUMAUI_Core.js" defer></script>
+    <script src="Scripts/Javascript/App_Javascript_ERUMAUI.js" defer></script>
+    <script src="Scripts/Javascript/App_Javascript_Extras.js" defer></script>
+    <script src="Scripts/Javascript/App_Javascript_KeyboardControls.js" defer></script>
+    <script src="Scripts/Javascript/App_Javascript_Initialization.js" defer></script>
+    <script src="Scripts/Javascript/App_Javascript_Projects.js" defer></script>
+    <script src="Scripts/Javascript/ERUMAUI_Javascript_Settings.js" defer></script>
+    <script src="Scripts/Javascript/ELISM24_Javascript_Controls.js" defer></script>
+    <div class="LoadingScreen" id="LoadingScreen">
+        <div class="LoadingScreen_Simple" id="LoadingScreen_Simple" Display="none">
+            <div class="LoadingScreen_Simple_Main">
+                <img class='LoadingScreen_Simple_Main_Icon' src='Assets/Icons/favicon.png' id="LoadingScreen_Icon_Simple" draggable='false' loading='lazy'/>
+                <h2 class="LoadingScreen_Simple_Main_Title" id="LoadingScreen_Title_Simple">
+                    App by ElmerF
+                </h2>
+                <p class="LoadingScreen_Simple_Main_Subtitle" id="LoadingScreen_Subtitle_Simple">
+                    Template
+                </p>
+            </div>
+            <div class="LoadingScreen_Simple_Bottom">
+                <div class="General_Loading LoadingScreen_Simple_Bottom_Loader">
+                    <div class="General_Loading_Bar"></div>
+                </div>
+                <div class="LoadingScreen_Simple_Bottom_Copyright">
+                    <img class='LoadingScreen_Simple_Bottom_Copyright_Icon' src='Assets/Icons/favicon.png' draggable='false' loading='lazy' id="LoadingScreen_Copyright_Icon_Simple"/>
+                    <p class="LoadingScreen_Simple_Bottom_Copyright_Title" id="LoadingScreen_Copyright_Title_Simple">
+                        Content By ElmerF 2024
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="LoadingScreen_Splash" id="LoadingScreen_Splash" Display="none">
+            <div class="LoadingScreen_Splash_Window">
+                <div class="LoadingScreen_Splash_Window_Image"></div>
+                <div class="LoadingScreen_Splash_Window_Main">
+                    <img class='LoadingScreen_Splash_Window_Main_Icon' src='Assets/Icons/favicon.png' id="LoadingScreen_Icon_Splash" draggable='false' loading='lazy'/>
+                    <div class="LoadingScreen_Splash_Window_Main_Text">
+                        <h2 class="LoadingScreen_Splash_Window_Main_Title" id="LoadingScreen_Title_Splash">
+                            App by ElmerF
+                        </h2>
+                        <p class="LoadingScreen_Splash_Window_Main_Subtitle" id="LoadingScreen_Subtitle_Splash">
+                            Template
+                        </p>
+                    </div>
+                </div>
+                <div class="General_Loading LoadingScreen_Splash_Window_Loader">
+                    <div class="General_Loading_Bar"></div>
+                </div>
+            </div>
+            <div class="LoadingScreen_Splash_Bottom">
+                <div class="LoadingScreen_Splash_Bottom_Copyright">
+                    <img class='LoadingScreen_Splash_Bottom_Copyright_Icon' src='Assets/Icons/favicon.png' id="LoadingScreen_Copyright_Icon_Splash" draggable='false' loading='lazy'/>
+                    <p class="LoadingScreen_Splash_Bottom_Copyright_Title" id="LoadingScreen_Copyright_Title_Splash">
+                        Content By ElmerF 2024
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="LoadingScreen_Custom" id="LoadingScreen_Custom" Display="none">
+            Custom stuff here
+        </div>
+    </div>
+    <div class="ClockScreen" id="ClockScreen" State="Inactive" onclick="ClockScreen_Toggle()">
+        <div class="ClockScreen_Main">
+            <h1 class="ClockScreen_Main_Time" id="ClockScreen_Main_Time">
+                10:23
+            </h1>
+            <p class="ClockScreen_Main_Date" id="ClockScreen_Main_Date">
+                Wednesday, 02/07/2024
+            </p>
+        </div>
+        <div class="ClockScreen_Extra">
+            <img class='ClockScreen_Extra_Icon' src='Assets/Icons/icon_wifi_offline.png' draggable='false' loading='lazy' id="ClockScreen_Extra_InternetStatus"/>
+            <p class="ClockScreen_Extra_Battery" id="ClockScreen_Extra_Battery">
+                100%
+            </p>
+        </div>
+    </div>
+    <div class="Subwindows" id="Subwindows">
+        <div class="Subwindow" id="SubwindowIDHere">
+            <div class="Subwindow_TitleBar">
+                <h2 class="Subwindow_TitleBar_Title">
+                    Subwindow
+                </h2>
+                <img class='Subwindow_TitleBar_Close' src='Assets/Icons/icon_close.png' draggable='false' loading='lazy' onclick="Subwindows_Close(this.parentNode.parentNode.id)"/>
+            </div>
+            <div class="Subwindow_Content">
+                <h1 class="General_Title">
+                    Content of subwindow here
+                </h1>
+            </div>
+            <div class="Subwindow_Bottom">
+                <div class="Subwindow_Bottom_Button_SecondaryAction">
+                    Secondary action 
+                </div>
+                <div class="Subwindow_Bottom_Button_PrimaryAction" onclick="Subwindows_Open('ModalIDHere')">
+                    Primary action button text here
+                </div>
+            </div>
+        </div>
+        <div class="Modal" id="ModalIDHere">
+			<div class="Modal_TitleBar">
+				<h2 class="Modal_TitleBar_Title">
+					Modal / Confirmation
+				</h2>
+			</div>
+			<div class="Modal_Content">
+				<p class="General_Paragraph">
+					In this format, the box closes if either the Esc button is pressed, or the user clicks any of the
+					button in the bottom section of the window.
+				</p>
+			</div>
+			<div class="Modal_Content_Bottom">
+				<div class="Subwindow_Bottom_Button_SecondaryAction">
+					Secondary action
+				</div>
+				<div class="Subwindow_Bottom_Button_PrimaryAction" onclick="Subwindows_Close('ModalIDHere')">
+					Primary action
+				</div>
+			</div>
+		</div>
+        <div class="Subwindow Projects" id="Projects_List_Window">
+            <div class="Subwindow_TitleBar">
+                <h2 class="Subwindow_TitleBar_Title">
+                    Projects
+                </h2>
+                <img class='Subwindow_TitleBar_Close' src='Assets/Icons/icon_close.png' draggable='false' loading='lazy' onclick="Subwindows_Close(this.parentNode.parentNode.id)"/>
+            </div>
+            <div class="Subwindow_Content">
+                <h3 class="General_Title">
+                    Currently loaded project
+                </h3>
+                <div class="Projects_CurrentlyLoaded">
+                    <div class="Projects_CurrentlyLoaded_Information">
+                        <h3 class="Projects_CurrentlyLoaded_Information_Title" id="Projects_CurrentlyLoaded_Information_Title">
+                            No project loaded
+                        </h3>
+                        <div class="Projects_CurrentlyLoaded_Information_Details">
+                            <p class="Projects_CurrentlyLoaded_Information_Details_Item" id="Projects_CurrentlyLoaded_Information_Status">
+                                Select a project below or create a new one to start saving your progress.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="Projects_CurrentlyLoaded_Controls" id="Projects_CurrentlyLoaded_Controls">
+                        <!-- Program using the Projects system must add their own onclick trigger here or something -->
+                        <div class="Projects_CurrentlyLoaded_Controls_Item">
+                            <img class='Projects_CurrentlyLoaded_Controls_Item_Icon' src='Assets/Icons/icon_project_save.png' draggable='false' loading='lazy'/>
+                        </div>
+                        <div class="Projects_CurrentlyLoaded_Controls_Item" onclick="Projects_Save_Project()">
+                            <img class='Projects_CurrentlyLoaded_Controls_Item_Icon' src='Assets/Icons/iconNew_save.png' draggable='false' loading='lazy'/>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="General_Title">
+                    Recent projects
+                </h3>
+                <div class="Projects_List" id="Projects_List">
+                    <div class="Projects_List_Item">
+                        <div class="Projects_List_Item_Information">
+                            <h3 class="Projects_List_Item_Information_Title">
+                                Project name
+                            </h3>
+                            <div class="Projects_List_Item_Information_Details">
+                                <p class="Projects_List_Item_Information_Details_Item">
+                                    21 March 2023; 11:26 PM
+                                </p>
+                                <p class="Projects_List_Item_Information_Details_Item">
+                                    ERUMA UI 1.0
+                                </p>
+                            </div>
+                        </div>
+                        <div class="Projects_List_Item_Controls">
+                            <div class="Projects_List_Item_Controls_Item">
+                                <img class='Projects_List_Item_Controls_Item_Icon' src='Assets/Icons/icon_download.png' draggable='false' loading='lazy'/>
+                            </div>
+                            <div class="Projects_List_Item_Controls_Item">
+                                <img class='Projects_List_Item_Controls_Item_Icon' src='Assets/Icons/iconNew_delete.png' draggable='false' loading='lazy'/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="Subwindow_Bottom">
+                <div class="Subwindow_Bottom_Button_SecondaryAction" onclick="Subwindows_Close('Projects_List_Window')">
+                    Close
+                </div>
+                <div class="Subwindow_Bottom_Button_SecondaryAction" onclick="Subwindows_Open('Projects_Open_Project_FromFile')">
+                    Open project from file
+                </div>
+                <div class="Subwindow_Bottom_Button_PrimaryAction" onclick="Subwindows_Open('Projects_Create_NewProject')">
+                    New project
+                </div>
+            </div>
+        </div>
+        <div class="Modal" id="Projects_Create_NewProject">
+			<div class="Modal_TitleBar">
+				<h2 class="Modal_TitleBar_Title">
+					Create new project
+				</h2>
+			</div>
+			<div class="Modal_Content">
+				<p class="General_Paragraph">
+					Specify a project name below. The data will be stored in your browser.
+				</p>
+                <input class="Input_Text" type="text" id="Projects_Create_NewProject_Name" placeholder="Project name" oninput="Projects_Check_Input(this.id, 'Projects_Create_NewProject_Name_Consequence')"/>
+			</div>
+			<div class="Modal_Content_Bottom">
+				<div class="Subwindow_Bottom_Button_SecondaryAction" onclick="Subwindows_Close('Projects_Create_NewProject')">
+                    Cancel
+				</div>
+				<div class="Subwindow_Bottom_Button_PrimaryAction" id="Projects_Create_NewProject_Name_Consequence" onclick="Projects_Create_NewProject_Check_Existence()" Clickability="Disabled">
+					Create project
+				</div>
+			</div>
+		</div>
+        <div class="Modal" id="Projects_Create_NewProject_Overwrite">
+			<div class="Modal_TitleBar">
+				<h2 class="Modal_TitleBar_Title">
+					Project name already exists
+				</h2>
+			</div>
+			<div class="Modal_Content">
+				<p class="General_Paragraph">
+                    The project name already exists. You can choose to overwrite the data in it or rename your project to a name that doesn't exist yet.
+				</p>
+			</div>
+			<div class="Modal_Content_Bottom">
+				<div class="Subwindow_Bottom_Button_SecondaryAction" onclick="Subwindows_Close('Projects_Create_NewProject_Overwrite')">
+                    Cancel
+				</div>
+				<div class="Subwindow_Bottom_Button_PrimaryAction" onclick="Projects_Create_NewProject_Overwrite_ExistingProject()">
+					Overwrite project
+				</div>
+			</div>
+		</div>
+        <div class="Modal" id="Projects_Open_Project_FromFile">
+			<div class="Modal_TitleBar">
+				<h2 class="Modal_TitleBar_Title">
+					Open project from file
+				</h2>
+			</div>
+			<div class="Modal_Content">
+				<p class="General_Paragraph">
+                    Add a valid .JSON file below that contains the project data. The system will automatically save it into your local storage as a new project.
+				</p>
+                <input type="file" id="Projects_Open_Project_FromFile_Input" accept=".json" class="Input_Text"/>
+			</div>
+			<div class="Modal_Content_Bottom">
+				<div class="Subwindow_Bottom_Button_SecondaryAction" onclick="Subwindows_Close('Projects_Open_Project_FromFile')">
+                    Cancel
+				</div>
+				<div class="Subwindow_Bottom_Button_PrimaryAction" onclick="Projects_Upload_Project()">
+					Save to local storage
+				</div>
+			</div>
+		</div>
+    </div>
+    <div class="Toasts" Position="Right" id="Toasts">
+        <!-- <div class="Toast">
+            <img class='Toast_Icon' src='Assets/Icons/placeholder.png' draggable='false' loading='lazy'/>
+            <h2 class="Toast_Title">
+                Hello!
+            </h2>
+            <p class="Toast_Content">
+                This is a normal toast notification.
+            </p>
+        </div> -->
+    </div>
+    <div class="Overlays" id="Overlays">
+        <div class="Debugger_Console" id="Debugger_Console" style="display: none">
+			<div class="Debugger_Console_Results" id="Debugger_Console_Text"></div>
+			<div class="Debugger_Console_CommandEntry">
+				<input class="Debugger_Console_CommandEntry_Input" id="Debugger_Console_CommandEntry_Input"
+					placeholder="Enter console command and press Enter"></input>
+			</div>
+		</div>
+        <div class="Header_PageNavigation_Menu" id="Header_PageNavigation_Menu" State="Inactive">
+            <div class="Header_PageNavigation_Menu_Navigation Header_PageNavigation_Menu_Content">
+                <h1 class="Header_PageNavigation_Menu_Title" id="Header_PageNavigation_Menu_Title">
+                    ERUMA UI 1.0
+                </h1>
+                <div class="Header_PageNavigation_Menu_Buttons" id="Header_PageNavigation_Menu_Links">
+                    <!-- <div class="Header_PageNavigation_Menu_Button_Item">
+                        <img class='Header_PageNavigation_Menu_Button_Item_Icon' src='Assets/Icons/placeholder.png' draggable='false' loading='lazy'/>
+                        <p class="Header_PageNavigation_Menu_Button_Item_Text">
+                            Home
+                        </p>
+                    </div>
+                    <div class="Header_PageNavigation_Menu_Button_Item">
+                        <img class='Header_PageNavigation_Menu_Button_Item_Icon' src='Assets/Icons/placeholder.png' draggable='false' loading='lazy'/>
+                        <p class="Header_PageNavigation_Menu_Button_Item_Text">
+                            Home
+                        </p>
+                    </div> -->
+                </div>
+            </div>
+            <div class="Header_PageNavigation_Menu_Actions Header_PageNavigation_Menu_Content">
+                <h1 class="Header_PageNavigation_Menu_Title">
+                    Page Actions
+                </h1>
+                <div class="Header_PageNavigation_Menu_Buttons" id="Header_PageActions_Menu_Links">
+                    <div class="Header_PageNavigation_Menu_Button_Item">
+                        <img class='Header_PageNavigation_Menu_Button_Item_Icon' src='Assets/Icons/placeholder.png' draggable='false' loading='lazy'/>
+                        <p class="Header_PageNavigation_Menu_Button_Item_Text">
+                            Home
+                        </p>
+                    </div>
+                    <div class="Header_PageNavigation_Menu_Button_Item">
+                        <img class='Header_PageNavigation_Menu_Button_Item_Icon' src='Assets/Icons/placeholder.png' draggable='false' loading='lazy'/>
+                        <p class="Header_PageNavigation_Menu_Button_Item_Text">
+                            Home
+                        </p>
+                    </div>
+                    <div class="Header_PageNavigation_Menu_Button_Item">
+                        <img class='Header_PageNavigation_Menu_Button_Item_Icon' src='Assets/Icons/placeholder.png' draggable='false' loading='lazy'/>
+                        <p class="Header_PageNavigation_Menu_Button_Item_Text">
+                            Home
+                        </p>
+                    </div>
+                    <div class="Header_PageNavigation_Menu_Button_Item">
+                        <img class='Header_PageNavigation_Menu_Button_Item_Icon' src='Assets/Icons/placeholder.png' draggable='false' loading='lazy'/>
+                        <p class="Header_PageNavigation_Menu_Button_Item_Text">
+                            Home
+                        </p>
+                    </div>
+                    <div class="Header_PageNavigation_Menu_Button_Item">
+                        <img class='Header_PageNavigation_Menu_Button_Item_Icon' src='Assets/Icons/placeholder.png' draggable='false' loading='lazy'/>
+                        <p class="Header_PageNavigation_Menu_Button_Item_Text">
+                            Home
+                        </p>
+                    </div>
+                    <div class="Header_PageNavigation_Menu_Button_Item">
+                        <img class='Header_PageNavigation_Menu_Button_Item_Icon' src='Assets/Icons/placeholder.png' draggable='false' loading='lazy'/>
+                        <p class="Header_PageNavigation_Menu_Button_Item_Text">
+                            Home
+                        </p>
+                    </div>
+                    <div class="Header_PageNavigation_Menu_Button_Item">
+                        <img class='Header_PageNavigation_Menu_Button_Item_Icon' src='Assets/Icons/placeholder.png' draggable='false' loading='lazy'/>
+                        <p class="Header_PageNavigation_Menu_Button_Item_Text">
+                            Home
+                        </p>
+                    </div>
+                    <div class="Header_PageNavigation_Menu_Button_Item">
+                        <img class='Header_PageNavigation_Menu_Button_Item_Icon' src='Assets/Icons/placeholder.png' draggable='false' loading='lazy'/>
+                        <p class="Header_PageNavigation_Menu_Button_Item_Text">
+                            Home
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="Header_StatusTray_Menu" id="Header_StatusTray_Menu" State="Inactive">
+            <img class='Header_StatusTray_Menu_Close' src='Assets/Icons/icon_close.png' draggable='false' loading='lazy' onclick="Header_Toggle_StatusTray()"/>
+            <div class="Header_StatusTray_Menu_Clock Header_StatusTray_Menu_Content">
+                <h1 class="Header_StatusTray_Menu_Clock_Clock" id="Header_StatusTray_Menu_Clock_Clock">
+                    10:17 PM
+                </h1>
+                <p class="Header_StatusTray_Menu_Clock_Date" id="Header_StatusTray_Menu_Clock_Date">
+                    Sunday, 02/04/2024
+                </p>
+            </div>
+            <div class="Header_StatusTray_Menu_Battery Header_StatusTray_Menu_Content">
+                <h1 class="Header_StatusTray_Menu_Battery_Percentage" id="Header_StatusTray_Menu_Battery_Percentage">
+                    100%
+                </h1>
+                <p class="Header_StatusTray_Menu_Battery_Status" id="Header_StatusTray_Menu_Battery_Status">
+                    Fully charged
+                </p>
+            </div>
+            <div class="Header_StatusTray_Menu_InternetStatus Header_StatusTray_Menu_Content">
+                <h1 class="Header_StatusTray_Menu_InternetStatus_Status" id="Header_StatusTray_Menu_InternetStatus_Status">
+                    Connected
+                </h1>
+                <p class="Header_StatusTray_Menu_InternetStatus_Description" id="Header_StatusTray_Menu_InternetStatus_Description">
+                    You are connected to the internet. Features that require an internet connection will function properly.
+                </p>
+                <a href="https://fast.com" target="_blank">
+                    <div class="Header_PageNavigation_Menu_Button_Item General_Button_Primary">
+                        <img class='General_Button_Icon Header_PageNavigation_Menu_Button_Item_Icon' src='Assets/Icons/placeholder.png' draggable='false' loading='lazy' Position="Left"/>
+                        <p class="Header_PageNavigation_Menu_Button_Item_Text" style="color: var(--BG-Color-Button-Primary-Text);">
+                            Speedtest
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+    </div>
+    <div class="Header_SidebarToggle" id="Header_SidebarToggle" onclick="Sidebar_Toggle()">
+        <img class='Header_SidebarToggle_Icon' src='Assets/Icons/icon_hamburgermenu.png' draggable='false' loading='lazy' id="Header_SidebarToggle_Icon"/>
+    </div>
+    <header class="Header" id="Header" Style_Margin_SidebarToggle="Enabled" Style_Margin_Sidebar="Enabled">
+		<div class="Header_PageNavigation" id="Header_PageNavigation" onclick="Header_Toggle_PageNavigation()">
+			<img src="Assets/Icons/favicon.png" class="Header_PageNavigation_Icon" id="Header_PageNavigation_Icon"></img>
+			<h2 class="Header_PageNavigation_Title" id="Header_PageNavigation_Title">
+				Home
+			</h2>
+		</div>
+		<div class="Header_Content" id="pageElement_Header_Actions">
+            <h3 class="Header_Content_Title" id="pageElement_Header_Title">
+                Tab name
+            </h3>
+		</div>
+		<div class="Header_StatusTray" id="Header_StatusTray" onclick="Header_Toggle_StatusTray()">
+			<div class="Header_StatusTray_Clock" id="Header_StatusTray_Clock">
+				<h1 class="Header_StatusTray_Clock_Time" id="Header_StatusTray_Clock_Time">
+					6:05 PM
+                </h1>
+			</div>
+			<div class="Header_StatusTray_Battery" id="Header_StatusTray_Battery">
+				<h1 class="Header_StatusTray_Battery_Percentage" id="Header_StatusTray_Battery_Percentage">
+					57%
+                </h1>
+			</div>
+			<div class="Header_StatusTray_Extras" id="Header_StatusTray_Extras">
+                <img class='Header_StatusTray_Extras_Icon' src='Assets/Icons/icon_wifi_offline.png' draggable='false' loading='lazy' id="Header_StatusTray_Extras_InternetStatus"/>
+			</div>
+		</div>
+    </header>
+    <header class="Ribbon" id="Ribbon" Style_Margin_Sidebar="Enabled" Style_Margin_Header="Enabled">
+        <div class="Ribbon_Section" id="Ribbon_TabIDHere">
+			<div class="Ribbon_Section_Item" onclick="ELISM_Display_Open()">
+				<img class="Ribbon_Section_Item_Icon" src="Assets/Icons/placeholder.png" />
+				<p class="Ribbon_Section_Item_Text">
+					Open display window
+				</p>
+			</div>
+		</div>
+        <div class="Ribbon_Section" id="Ribbon_TabIDHere2">
+			<div class="Ribbon_Section_Item">
+				<img class="Ribbon_Section_Item_Icon" src="Assets/Icons/placeholder.png" />
+				<p class="Ribbon_Section_Item_Text">
+					Button 2
+				</p>
+			</div>
+			<div class="Ribbon_Section_Item">
+				<img class="Ribbon_Section_Item_Icon" src="Assets/Icons/placeholder.png" />
+				<p class="Ribbon_Section_Item_Text">
+					Button 2
+				</p>
+			</div>
+            <div class="Ribbon_Section_Item">
+				<img class="Ribbon_Section_Item_Icon" src="Assets/Icons/placeholder.png" />
+				<p class="Ribbon_Section_Item_Text">
+					Button 2
+				</p>
+			</div>
+		</div>
+    </header>
+    <div class="Tabs_Vertical_Container_Selector Sidebar" id="Sidebar" State="Collapsed" Style_Margin_Header="Enabled">
+        <div class="Tabs_Vertical_Container_Selector_Item" id="TabIDHere" onclick="Tabs_ChangeTab(this.id, 'Vertical')" Tabs_Tab_Title="English & Library & Information Services Month" Tabs_Tab_Target_Container="Content" Tabs_Tab_Target_Tab="tab_TabIDHere" Tabs_UseRibbon="true" Tabs_Tab_Target_Ribbon="Ribbon_TabIDHere" Tabs_UseHeaderTitle="true" State="Selected">
+			<div class="Tabs_Vertical_Container_Selector_Item_Icon">
+				<h2 class="Tabs_Vertical_Container_Selector_Item_Icon_Icon">
+					1
+				</h2>
+			</div>
+			<p class="Tabs_Vertical_Container_Selector_Item_Text">
+				Tab 1
+			</p>
+		</div>
+		<div class="Tabs_Vertical_Container_Selector_Item" id="TabIDHere2" onclick="Tabs_ChangeTab(this.id, 'Vertical')" Tabs_Tab_Title="Tab 2" Tabs_Tab_Target_Container="Content" Tabs_Tab_Target_Tab="tab_TabIDHere2" Tabs_UseRibbon="true" Tabs_Tab_Target_Ribbon="Ribbon_TabIDHere2" Tabs_UseHeaderTitle="true" Tabs_UseFullContainer="false">
+			<div class="Tabs_Vertical_Container_Selector_Item_Icon">
+				<img src="Assets/Icons/placeholder.png" class="Tabs_Vertical_Container_Selector_Item_Icon_Icon"/>
+			</div>
+			<p class="Tabs_Vertical_Container_Selector_Item_Text">
+				Tab 2
+			</p>
+            
+		</div>
+		<div class="Tabs_Vertical_Container_Selector_Item" id="TabIDHere3" onclick="Tabs_ChangeTab(this.id, 'Vertical')" Tabs_Tab_Title="New UI Elements" Tabs_Tab_Target_Container="Content" Tabs_Tab_Target_Tab="tab_TabIDHere3" Tabs_UseRibbon="hide" Tabs_Tab_Target_Ribbon="Ribbon_TabIDHere2" Tabs_UseHeaderTitle="true" Tabs_UseFullContainer="true">
+			<div class="Tabs_Vertical_Container_Selector_Item_Icon">
+				<h2 class="Tabs_Vertical_Container_Selector_Item_Icon_Icon">
+					3
+				</h2>
+			</div>
+			<p class="Tabs_Vertical_Container_Selector_Item_Text">
+				Tab 3
+			</p>
+		</div>
+    </div>
+    <div class="MainContent_Container" id="MainContent_Container">
+        <div class="MainContent_Container_Pusher" id="MainContent_Container_Pusher"></div>
+        <main class="MainContent" id="MainContent" Style_Margin_Header="Enabled" Style_Margin_Ribbon="Enabled" Style_Margin_Sidebar="Enabled">
+            <div class="Content" id="Content" Style_Margin="Enabled" Tabs_CurrentTab="">
+                <div class="Tab_Container_Content_Item Content_Item" id="tab_TabIDHere">
+                    <h1 class="General_Title" style="text-align: center;">
+                        Control Panel
+                    </h1>
+                    <div class="ELISM24_Controls">
+                        <div class="ELISM24_Controls_Info">
+                            <h1 class="ELISM24_Controls_Info_Time" id="ELISM24_Controls_Info_Time">
+                                02:00
+                            </h1>
+                            <h2 class="ELISM24_Controls_Info_Time_Running" id="ELISM24_Controls_Info_Time_Running">
+                                / 0:00
+                            </h2>
+                            <h3 class="ELISM24_Controls_Info_Team" id="ELISM24_Controls_Info_Team">
+                                The English Society
+                            </h3>
+                            <h3 class="ELISM24_Controls_Info_Word" id="ELISM24_Controls_Info_Word">
+                                Word
+                            </h3>
+                            <p class="General_Paragraph ELISM24_Controls_Info_Timer_State" id="ELISM24_Controls_Output_Timer_State">
+                                Timer state
+                            </p>
+                        </div>
+                        <div class="ELISM24_Controls_Buttons">
+                            <button class="General_Button" onclick="ELISM_Timer_Reset()">
+                                Reset timer
+                            </button>
+                            <button class="General_Button" onclick="ELISM_Command_Broadcast('START_TIMER')">
+                                Start timer
+                            </button>
+                            <button class="General_Button" onclick="ELISM_Command_Broadcast('STOP_TIMER')">
+                                Stop timer
+                            </button>
+                            <button class="General_Button" onclick="ELISM_Violations_Update()">
+                                Violation
+                            </button>
+                        </div>
+                        <div class="ELISM24_Controls_Values">
+                            <div class="ELISM24_Controls_Values_Card">
+                                <input type="text" class="Input_Text" autocomplete="off" id="ELISM24_Controls_Values_Input_StartingTime" placeholder="Starting time (in seconds)" value="120" oninput="ELISM_Timer_StartingTime_Preview()"/>
+                                <div style="display: grid; grid-template-columns: auto 1fr; grid-gap: 10px">
+                                    <p class="General_Paragraph" id="ELISM24_Controls_Values_Output_StartingTime">
+                                        00:00
+                                    </p>
+                                    <button class="General_Button" onclick="ELISM_Timer_StartingTime_Update()">
+                                        Update starting time
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="ELISM24_Controls_Values_Card">
+                                <input type="text" class="Input_Text" autocomplete="off" id="ELISM24_Controls_Values_Input_ViolationTime" placeholder="Violation time (in seconds)" value="3"/>
+                                <button class="General_Button" onclick="ELISM_Timer_ViolationTime_Update()">
+                                    Update violation time
+                                </button>
+                            </div>
+                            <div class="ELISM24_Controls_Values_Card">
+                                <input type="text" class="Input_Text" autocomplete="off" id="ELISM24_Controls_Values_Input_Team" placeholder="Team name"/>
+                                <button class="General_Button" onclick="ELISM_Team_Update()">
+                                    Update team name
+                                </button>
+                            </div>
+                            <div class="ELISM24_Controls_Values_Card">
+                                <p class="General_Paragraph" id="ELISM24_Controls_Values_WordDisplayState">
+                                    Display state
+                                </p>
+                                <button class="General_Button" onclick="ELISM_Command_Broadcast('TOGGLE_TIMER_STATE')">
+                                    Toggle display state
+                                </button>
+                            </div>
+                            <div class="ELISM24_Controls_Values_Card">
+                                <p class="General_Paragraph" id="ELISM24_Controls_Values_BannerDisplayState">
+                                    Display state
+                                </p>
+                                <button class="General_Button" onclick="ELISM_Command_Broadcast('TOGGLE_SCREEN_STATE')">
+                                    Toggle banner state
+                                </button>
+                            </div>
+                            <div class="ELISM24_Controls_Values_Card">
+                                <input type="text" class="Input_Text" autocomplete="off" id="ELISM24_Controls_Values_Input_Word" placeholder="Word"/>
+                                <button class="General_Button" onclick="ELISM_Command_Broadcast('UPDATE_WORD_DISPLAY_TEXT', document.getElementById('ELISM24_Controls_Values_Input_Word').value)">
+                                    Update word display
+                                </button>
+                            </div>                            
+                        </div>
+                        
+                    </div>
+                    <div class="ELISM24_Records">
+                        <div class="ELISM24_Records_Title">
+                            <h2 class="General_Title">
+                                Records
+                            </h2>
+                            <button class="General_Button" onclick="ELISM_Records_Add()">
+                                Add this record
+                            </button>
+                        </div>
+                        <div class="ELISM24_Records_List_Item" style="font-weight: bolder;">
+                            <p class="ELISM24_Records_List_Item_Text">
+                                Team
+                            </p>
+                            <p class="ELISM24_Records_List_Item_Text">
+                                Word
+                            </p>
+                            <p class="ELISM24_Records_List_Item_Text">
+                                Time remaining
+                            </p>
+                            <p class="ELISM24_Records_List_Item_Text">
+                                Running time
+                            </p>
+                            <p class="ELISM24_Records_List_Item_Text">
+                                Violations
+                            </p>
+                            <span></span>
+                        </div>
+                        <div class="ELISM24_Records_List" id="ELISM24_Records_List">
+                            <div class="ELISM24_Records_List_Item">
+                                <p class="ELISM24_Records_List_Item_Text">
+                                    The English Society
+                                </p>
+                                <p class="ELISM24_Records_List_Item_Text">
+                                    Library
+                                </p>
+                                <p class="ELISM24_Records_List_Item_Text">
+                                    1:58
+                                </p>
+                                <p class="ELISM24_Records_List_Item_Text">
+                                    0:02
+                                </p>
+                                <p class="ELISM24_Records_List_Item_Text">
+                                    0
+                                </p>
+                                <button class="General_Button ELISM24_Records_List_Item_Delete">
+                                    <img src="Assets/Icons/iconNew_delete.png" alt=""/>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="Tab_Container_Content_Item Content_Item" id="tab_TabIDHere2">
+                    <h1 class="General_Title">
+                        Tab 2
+                    </h1>
+                    <div class="Tab_Horizontal_Container_Selector" id="Tab_Horizontal_Container_Selector">
+                        <div class="Tab_Horizontal_Container_Selector_Item" onclick="Tabs_ChangeTab(this.id, 'Horizontal')" id="Tabs_Horizontal_Button_1" Tabs_Tab_Title = "Title for title bar here" Tabs_Tab_Target_Container = "Tabs_Tab_Target_Container_Horizontal_1" Tabs_Tab_Target_Tab = "HorizontalTab_Hori_Tab_IDHere_1" State="Selected">
+                            <img src="Assets/Icons/placeholder.png" class="Tab_Horizontal_Container_Selector_Item_Icon">
+                            <p class="Tab_Horizontal_Container_Selector_Item_Text">
+                                Tab 1
+                            </p>
+                        </div>
+                        <div class="Tab_Horizontal_Container_Selector_Item" onclick="Tabs_ChangeTab(this.id, 'Horizontal')" id="Tabs_Horizontal_Button_2" Tabs_Tab_Title = "Title for title bar here" Tabs_Tab_Target_Container = "Tabs_Tab_Target_Container_Horizontal_1" Tabs_Tab_Target_Tab = "HorizontalTab_Hori_Tab_IDHere_2">
+                            <img src="Assets/Icons/placeholder.png" class="Tab_Horizontal_Container_Selector_Item_Icon">
+                            <p class="Tab_Horizontal_Container_Selector_Item_Text">
+                                Tab 2
+                            </p>
+                        </div>
+                        <div class="Tab_Horizontal_Container_Selector_Item" onclick="Tabs_ChangeTab(this.id, 'Horizontal')" id="Tabs_Horizontal_Button_3" Tabs_Tab_Title = "Title for title bar here" Tabs_Tab_Target_Container = "Tabs_Tab_Target_Container_Horizontal_1" Tabs_Tab_Target_Tab = "HorizontalTab_Hori_Tab_IDHere_3">
+                            <img src="Assets/Icons/placeholder.png" class="Tab_Horizontal_Container_Selector_Item_Icon">
+                            <p class="Tab_Horizontal_Container_Selector_Item_Text">
+                                Tab 333333333
+                            </p>
+                        </div>
+                        <div class="Tab_Horizontal_Container_Selector_Item" onclick="Tabs_ChangeTab(this.id, 'Horizontal')" id="Tabs_Horizontal_Button_4" Tabs_Tab_Title = "Title for title bar here" Tabs_Tab_Target_Container = "Tabs_Tab_Target_Container_Horizontal_1" Tabs_Tab_Target_Tab = "HorizontalTab_Hori_Tab_IDHere_4">
+                            <img src="Assets/Icons/placeholder.png" class="Tab_Horizontal_Container_Selector_Item_Icon">
+                            <p class="Tab_Horizontal_Container_Selector_Item_Text">
+                                Tab 444444444444444444444444
+                            </p>
+                        </div>
+                    </div>
+    
+                    <div class="Tab_Horizontal_Container_Content" id="Tabs_Tab_Target_Container_Horizontal_1" Tabs_CurrentTab = "">
+                        <div class="Tab_Container_Content_Item" id="HorizontalTab_Hori_Tab_IDHere_1">
+                            Content 1
+                        </div>
+                        <div class="Tab_Container_Content_Item" id="HorizontalTab_Hori_Tab_IDHere_2">
+                            Content 2
+                        </div>
+                        <div class="Tab_Container_Content_Item" id="HorizontalTab_Hori_Tab_IDHere_3">
+                            Content 3
+                        </div>
+                        <div class="Tab_Container_Content_Item" id="HorizontalTab_Hori_Tab_IDHere_4">
+                            Content 4
+                        </div>
+                    </div>	
+                </div>
+                <div class="Tab_Container_Content_Item Content_Item" id="tab_TabIDHere3">
+                    <h1 class="General_Title">
+                        Tab 3
+                    </h1>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+</body>
+</html>
