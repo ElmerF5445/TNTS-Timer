@@ -1,10 +1,10 @@
 {
     "App_Info": {
-        "Title": "ERUMA UI",
+        "Title": "TNTS Timer Control Panel",
         "Version_Title": "1.0",
         "Version_Number": "1.0",
-        "Version_CompilationDate": "18 August 2024",
-        "Copyright_Title": "Content By ElmerF 2024",
+        "Version_CompilationDate": "22 February 2025",
+        "Copyright_Title": "Content By ElmerF 2025",
         "Copyright_Icon": "Assets/Icons/ContentByElmerF.png",
         "Key_Prefix": "ERUMAUI"
     },
@@ -178,7 +178,7 @@
         {
             "Page_File": "ELISM24_Controls.html",
             "Page_Property": {
-                "TitleBar_Title": "Word Genius",
+                "TitleBar_Title": "Tagisan ng Talino at Sining",
                 "Page": {
                     "Title": "Control Panel",
                     "Icon": "Assets/Icons/icon_schedules.png",
@@ -187,41 +187,30 @@
                     }
                 },
                 "Header": {
-                    "Title": "ELISM Timer",
+                    "Title": "TNTS Timer Control Panel",
                     "Icon": "Assets/Icons/icon_settings.png",
                     "Menu_Contents": {
                         "PageNavigation": [
-                            
-                            
+                            {
+                                "Title": "Settings",
+                                "Link": "https://elmerf5445.github.io/ERUMA-UI/Pages/ERUMAUI_Settings.html",
+                                "Icon": "Assets/Icons/icon_settings.png"
+                            }
                         ],
                         "Actions": [
                             {
-                                "Title": "Back",
+                                "Title": "Open display",
                                 "Link": null,
-                                "Icon": "Assets/Icons/icon_leftArrow.png",
-                                "OnclickFunction": "history.back()",
+                                "Icon": "Assets/Icons/icon_expand.png",
+                                "OnclickFunction": "ELISM_Display_Open()",
                                 "CloseAfterClick": false
-                            },
+                            }, 
                             {
-                                "Title": "Save",
+                                "Title": "Open timer video",
                                 "Link": null,
-                                "Icon": "Assets/Icons/iconNew_save.png",
-                                "OnclickFunction": "Settings_Save()",
+                                "Icon": "Assets/Icons/icon_zoom.png",
+                                "OnclickFunction": "ELISM_Display_Open()",
                                 "CloseAfterClick": false
-                            },
-                            {
-                                "Title": "Import settings",
-                                "Link": null,
-                                "Icon": "Assets/Icons/iconNew_download.png",
-                                "OnclickFunction": "Subwindows_Open('Settings_Import')",
-                                "CloseAfterClick": true
-                            },
-                            {
-                                "Title": "Export settings",
-                                "Link": null,
-                                "Icon": "Assets/Icons/icon_output.png",
-                                "OnclickFunction": "Subwindows_Open('Settings_Export')",
-                                "CloseAfterClick": true
                             }
                         ]
                     }
@@ -261,7 +250,7 @@
         {
             "Page_File": "ELISM24_Display.html",
             "Page_Property": {
-                "TitleBar_Title": "English & Library & Information Services Month 2024",
+                "TitleBar_Title": "Tagisan ng Talino at Sining",
                 "Page": {
                     "Title": "Timer",
                     "Icon": "Assets/Icons/icon_schedules.png",

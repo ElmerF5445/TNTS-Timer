@@ -437,7 +437,7 @@
     <header class="Ribbon" id="Ribbon" Style_Margin_Sidebar="Enabled" Style_Margin_Header="Enabled">
         <div class="Ribbon_Section" id="Ribbon_TabIDHere">
 			<div class="Ribbon_Section_Item" onclick="ELISM_Display_Open()">
-				<img class="Ribbon_Section_Item_Icon" src="Assets/Icons/placeholder.png" />
+				<img class="Ribbon_Section_Item_Icon" src="Assets/Icons/icon_expand.png" />
 				<p class="Ribbon_Section_Item_Text">
 					Open display window
 				</p>
@@ -465,7 +465,7 @@
 		</div>
     </header>
     <div class="Tabs_Vertical_Container_Selector Sidebar" id="Sidebar" State="Collapsed" Style_Margin_Header="Enabled">
-        <div class="Tabs_Vertical_Container_Selector_Item" id="TabIDHere" onclick="Tabs_ChangeTab(this.id, 'Vertical')" Tabs_Tab_Title="English & Library & Information Services Month" Tabs_Tab_Target_Container="Content" Tabs_Tab_Target_Tab="tab_TabIDHere" Tabs_UseRibbon="true" Tabs_Tab_Target_Ribbon="Ribbon_TabIDHere" Tabs_UseHeaderTitle="true" State="Selected">
+        <div class="Tabs_Vertical_Container_Selector_Item" id="TabIDHere" onclick="Tabs_ChangeTab(this.id, 'Vertical')" Tabs_Tab_Title="Stand Up and Deliver" Tabs_Tab_Target_Container="Content" Tabs_Tab_Target_Tab="tab_TabIDHere" Tabs_UseRibbon="true" Tabs_Tab_Target_Ribbon="Ribbon_TabIDHere" Tabs_UseHeaderTitle="true" State="Selected">
 			<div class="Tabs_Vertical_Container_Selector_Item_Icon">
 				<h2 class="Tabs_Vertical_Container_Selector_Item_Icon_Icon">
 					1
@@ -506,20 +506,24 @@
                     <div class="ELISM24_Controls">
                         <div class="ELISM24_Controls_Info">
                             <h1 class="ELISM24_Controls_Info_Time" id="ELISM24_Controls_Info_Time">
-                                02:00
+                                03:00
                             </h1>
                             <h2 class="ELISM24_Controls_Info_Time_Running" id="ELISM24_Controls_Info_Time_Running">
                                 / 0:00
                             </h2>
                             <h3 class="ELISM24_Controls_Info_Team" id="ELISM24_Controls_Info_Team">
-                                The English Society
+                                No contestant name
                             </h3>
-                            <h3 class="ELISM24_Controls_Info_Word" id="ELISM24_Controls_Info_Word">
+                            <!-- <h3 class="ELISM24_Controls_Info_Word" id="ELISM24_Controls_Info_Word">
                                 Word
-                            </h3>
+                            </h3> -->
                             <p class="General_Paragraph ELISM24_Controls_Info_Timer_State" id="ELISM24_Controls_Output_Timer_State">
                                 Timer state
                             </p>
+                        </div>
+                        <div class="Toggle" id="ELISM24_Controls_AllowOvertime" onclick="Buttons_Toggle(this.id); ELISM_Timer_Rule_Update('AllowOvertime')" State="Active" style="width: 150px; margin-bottom: 10px;">
+                            <div class="Toggle_Indicator"></div>
+                            Allow overtime
                         </div>
                         <div class="ELISM24_Controls_Buttons">
                             <button class="General_Button" onclick="ELISM_Timer_Reset()">
@@ -531,42 +535,42 @@
                             <button class="General_Button" onclick="ELISM_Command_Broadcast('STOP_TIMER')">
                                 Stop timer
                             </button>
-                            <button class="General_Button" onclick="ELISM_Violations_Update()">
+                            <!-- <button class="General_Button" onclick="ELISM_Violations_Update()">
                                 Violation
-                            </button>
+                            </button> -->
                         </div>
                         <div class="ELISM24_Controls_Values">
                             <div class="ELISM24_Controls_Values_Card">
-                                <input type="text" class="Input_Text" autocomplete="off" id="ELISM24_Controls_Values_Input_StartingTime" placeholder="Starting time (in seconds)" value="120" oninput="ELISM_Timer_StartingTime_Preview()"/>
+                                <input type="text" class="Input_Text" autocomplete="off" id="ELISM24_Controls_Values_Input_StartingTime" placeholder="Starting time (in seconds)" value="180" oninput="ELISM_Timer_StartingTime_Preview()"/>
                                 <div style="display: grid; grid-template-columns: auto 1fr; grid-gap: 10px">
                                     <p class="General_Paragraph" id="ELISM24_Controls_Values_Output_StartingTime">
-                                        00:00
+                                        03:00
                                     </p>
-                                    <button class="General_Button" onclick="ELISM_Timer_StartingTime_Update()">
+                                    <button class="General_Button" onclick="ELISM_Timer_StartingTime_Update(), ELISM_Timer_Reset()">
                                         Update starting time
                                     </button>
                                 </div>
                             </div>
-                            <div class="ELISM24_Controls_Values_Card">
+                            <!-- <div class="ELISM24_Controls_Values_Card">
                                 <input type="text" class="Input_Text" autocomplete="off" id="ELISM24_Controls_Values_Input_ViolationTime" placeholder="Violation time (in seconds)" value="3"/>
                                 <button class="General_Button" onclick="ELISM_Timer_ViolationTime_Update()">
                                     Update violation time
                                 </button>
-                            </div>
+                            </div> -->
                             <div class="ELISM24_Controls_Values_Card">
-                                <input type="text" class="Input_Text" autocomplete="off" id="ELISM24_Controls_Values_Input_Team" placeholder="Team name"/>
+                                <input type="text" class="Input_Text" autocomplete="off" id="ELISM24_Controls_Values_Input_Team" placeholder="Contestant name"/>
                                 <button class="General_Button" onclick="ELISM_Team_Update()">
-                                    Update team name
+                                    Update contestant name
                                 </button>
                             </div>
-                            <div class="ELISM24_Controls_Values_Card">
+                            <!-- <div class="ELISM24_Controls_Values_Card">
                                 <p class="General_Paragraph" id="ELISM24_Controls_Values_WordDisplayState">
                                     Display state
                                 </p>
                                 <button class="General_Button" onclick="ELISM_Command_Broadcast('TOGGLE_TIMER_STATE')">
                                     Toggle display state
                                 </button>
-                            </div>
+                            </div> -->
                             <div class="ELISM24_Controls_Values_Card">
                                 <p class="General_Paragraph" id="ELISM24_Controls_Values_BannerDisplayState">
                                     Display state
@@ -575,12 +579,12 @@
                                     Toggle banner state
                                 </button>
                             </div>
-                            <div class="ELISM24_Controls_Values_Card">
+                            <!-- <div class="ELISM24_Controls_Values_Card">
                                 <input type="text" class="Input_Text" autocomplete="off" id="ELISM24_Controls_Values_Input_Word" placeholder="Word"/>
                                 <button class="General_Button" onclick="ELISM_Command_Broadcast('UPDATE_WORD_DISPLAY_TEXT', document.getElementById('ELISM24_Controls_Values_Input_Word').value)">
                                     Update word display
                                 </button>
-                            </div>                            
+                            </div>                             -->
                         </div>
                         
                     </div>
@@ -595,20 +599,20 @@
                         </div>
                         <div class="ELISM24_Records_List_Item" style="font-weight: bolder;">
                             <p class="ELISM24_Records_List_Item_Text">
-                                Team
+                                Contestant
                             </p>
-                            <p class="ELISM24_Records_List_Item_Text">
+                            <!-- <p class="ELISM24_Records_List_Item_Text">
                                 Word
-                            </p>
+                            </p> -->
                             <p class="ELISM24_Records_List_Item_Text">
                                 Time remaining
                             </p>
                             <p class="ELISM24_Records_List_Item_Text">
                                 Running time
                             </p>
-                            <p class="ELISM24_Records_List_Item_Text">
+                            <!-- <p class="ELISM24_Records_List_Item_Text">
                                 Violations
-                            </p>
+                            </p> -->
                             <span></span>
                         </div>
                         <div class="ELISM24_Records_List" id="ELISM24_Records_List">

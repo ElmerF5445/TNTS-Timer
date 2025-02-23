@@ -54,13 +54,19 @@ function ELISM_Timer_Time_Running_Render(Seconds){
     Timer_Running_Seconds = Seconds; 
     const minutes = Math.floor(Timer_Running_Seconds / 60);
     const remainingSeconds = Timer_Running_Seconds % 60;
-    document.getElementById("ELISM24_Controls_Info_Time_Running").innerHTML = `/ ${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')} / Violations: ${Violation_Count}`;
+    // document.getElementById("ELISM24_Controls_Info_Time_Running").innerHTML = `/ ${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')} / Violations: ${Violation_Count}`;
+    document.getElementById("ELISM24_Controls_Info_Time_Running").innerHTML = `/ ${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
 }
 
 function ELISM_Timer_Time_Format(){
-    const minutes = Math.floor(Timer_Seconds / 60);
-    const remainingSeconds = Timer_Seconds % 60;
-    return `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
+    const absSeconds = Math.abs(Timer_Seconds);
+    const minutes = Math.floor(absSeconds / 60);
+    const remainingSeconds = absSeconds % 60;
+    if (Timer_Seconds >= 0){
+        return `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
+    } else if (Timer_Seconds < 0){
+        return `-${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
+    }
 }
 
 var Team = "";
@@ -69,7 +75,7 @@ function ELISM_Team_Update(){
     document.getElementById("ELISM24_Controls_Info_Team").innerHTML = Team;
 }
 
-var Timer_StartingTime = 120;
+var Timer_StartingTime = 180;
 function ELISM_Timer_StartingTime_Update(){
     Timer_StartingTime = document.getElementById("ELISM24_Controls_Values_Input_StartingTime").value;
 }
@@ -83,6 +89,9 @@ function ELISM_Timer_StartingTime_Preview(){
 
 function ELISM_Timer_Reset(){
     ELISM_Command_Broadcast('RESET_TIMER', Timer_StartingTime);
+    Timer_Seconds = Timer_StartingTime;
+    Timer_Running_Seconds = 0;
+    ELISM_Timer_Time_Render(Timer_Seconds);
 }
 
 var Timer_Violation_Time = 3;
@@ -145,6 +154,20 @@ function ELISM_Records_Render(){
                 <img src="Assets/Icons/iconNew_delete.png" alt=""/>
             </button>
         `;
+        var ELISM_Records_Item_InnerHTML = `
+            <p class="ELISM24_Records_List_Item_Text">
+                ${Data.Team}
+            </p>
+            <p class="ELISM24_Records_List_Item_Text">
+                ${ELISM_Translate_Time(Data.Time_Remaining)}
+            </p>
+            <p class="ELISM24_Records_List_Item_Text">
+                ${ELISM_Translate_Time(Data.Time_Running)}
+            </p>
+            <button class="General_Button ELISM24_Records_List_Item_Delete" onclick="ELISM_Records_Delete(${a})">
+                <img src="Assets/Icons/iconNew_delete.png" alt=""/>
+            </button>
+        `;
         var ELISM_Records_Item = document.createElement('div');
         ELISM_Records_Item.innerHTML = ELISM_Records_Item_InnerHTML;
         ELISM_Records_Item.setAttribute("class", "ELISM24_Records_List_Item");
@@ -179,4 +202,14 @@ function ELISM_Translate_Time(Seconds){
 
 function ELISM_Screen_Toggle(){
     ELISM_Command_Broadcast('TOGGLE_SCREEN_STATE');
+}
+
+function ELISM_Timer_Rule_Update(Rule){
+    if (Rule == "AllowOvertime") {
+        if (Element_Attribute_Get('ELISM24_Controls_AllowOvertime', 'State') == "Active"){
+            ELISM_Command_Broadcast("RULE_ALLOWOVERTIME_UPDATE", true);
+        } else {
+            ELISM_Command_Broadcast("RULE_ALLOWOVERTIME_UPDATE", false);
+        }
+    }
 }

@@ -1,8 +1,9 @@
 .Content_Item[Background]{
-    background-image: url("../../Assets/Background/BG1.png");
+    background-image: url("../../Assets/Images/Banner_Layer_1.png");
     background-color: #2b2f51;
+    background-color: #3267ff;
     background-position: center;
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     height: -webkit-fill-available;
     display: flex;
@@ -33,6 +34,7 @@
     font-family: var(--Text-Font-Primary);
     color: var(--Text-Color);
     margin: 0;
+    font-size: 40px;
 }
 
 .ELISM24_Controls_Info_Time{
@@ -93,7 +95,7 @@
 
 .ELISM24_Records_List_Item{
     display: grid;
-    grid-template-columns: repeat(5, 1fr) 80px;
+    grid-template-columns: repeat(3, 1fr) 80px;
     align-items: center;
     border-radius: 5px;
     padding: 10px;
@@ -122,7 +124,8 @@
 }
 
 .ELISM24_Timer{
-    background-color: #2b2f51;
+    /* background-color: #2b2f51;
+    background-color: #3267ff; */
     width: 75%;
     display: flex;
     flex-direction: column;
@@ -130,6 +133,7 @@
     animation-duration: 0.2s;
     animation-iteration-count: 2;
 }
+
 
 .ELISM24_Timer[Shake = "None"]{
     animation-name: none;
@@ -139,18 +143,24 @@
     animation-name: Shake;
 }
 
+.ELISM24_Timer_Time[Overtime]{
+    animation-name: Timer_Overtime_Blink;
+    animation-duration: 0.2s;
+    animation-iteration-count: 5;
+}
+
 .ELISM24_Timer[State="Timer"] > .ELISM24_Timer_Time > .ELISM24_Timer_Time_Text{
-    font-size: 20vw;
+    font-size: 450px;
 }
 
 .ELISM24_Timer[State="Timer"] > .ELISM24_Timer_Word > .ELISM24_Timer_Word_Text{
-    font-size: 5vw;
+    font-size: 15vw;
     opacity: 0%;
     display: none;
 }
 
 .ELISM24_Timer[State="WithWord"] > .ELISM24_Timer_Time > .ELISM24_Timer_Time_Text{
-    font-size: 10vw;
+    font-size: 15vw;
 }
 
 .ELISM24_Timer[State="WithWord"] > .ELISM24_Timer_Word > .ELISM24_Timer_Word_Text{
@@ -162,9 +172,12 @@
 
 .ELISM24_Timer_Time_Text, .ELISM24_Timer_Word_Text{
     font-family: Meditative;
+    font-weight: 1500;
     text-align: center;
     margin: 0;
     color: #fcb956;
+    color: white;
+    -webkit-text-stroke: white 10px;
 }
 
 @keyframes Shake{
@@ -189,6 +202,10 @@
     top: 0;
     background-color: #2b2f51;
     opacity: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 150;
 }
 
 .ELISM24_Banner[State = "Active"]{
@@ -197,8 +214,10 @@
 
 .ELISM24_Banner_Layer{
     position: absolute;
-    object-fit: contain;
+    object-fit: cover;
     width: 100%;
+    height: 100%;
+
 }
 
 .ELISM24_Banner_Logo{
@@ -254,5 +273,84 @@
     }
     100%{
         opacity: 0%;
+    }
+}
+
+.ELISM24_Timer_Phases{
+    height: 175px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.ELISM24_Timer_Phases_Item{
+    width: 125px;
+    height: 125px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    margin: 15px 15px;
+    border: solid white 10px;
+    transform: rotate(45deg);
+}
+
+.ELISM24_Timer_Phases_Item[Phase="Red"]{
+    background-color: rgb(255, 88, 88);
+}
+
+.ELISM24_Timer_Phases_Item[Phase="Yellow"]{
+    background-color: rgb(255, 241, 88);
+}
+
+.ELISM24_Timer_Phases_Item[Phase="Green"]{
+    background-color: rgb(88, 255, 110);
+}
+
+.ELISM24_Timer_Phases_Item[State="Inactive"]{
+    width: 50px;
+    height: 50px;
+    border-radius: 0%;
+}
+
+.ELISM24_Timer_Phases_Item[State="Active"]{
+    width: 175px;
+    height: 175px;
+    transform: rotate(180deg);
+}
+
+.ELISM24_Timer_Phases_Item[State="Standby"]{
+    width: 125px;
+    height: 125px;
+}
+
+
+.ELISM24_Timer[Phase = "Green"] > .ELISM24_Timer_Time > .ELISM24_Timer_Time_Text{
+    color: rgb(88, 255, 110);
+}
+
+.ELISM24_Timer[Phase = "Yellow"] > .ELISM24_Timer_Time > .ELISM24_Timer_Time_Text{
+    color: rgb(255, 241, 88);
+}
+
+.ELISM24_Timer[Phase = "Red"] > .ELISM24_Timer_Time > .ELISM24_Timer_Time_Text{
+    color: rgb(255, 88, 88);
+}
+
+@keyframes Timer_Overtime_Blink {
+    0% {
+        opacity: 100%;
+    }
+    25% {
+        opacity: 0%;
+    }
+    50% {
+        opacity: 100%;
+    }
+    75% {
+        opacity: 0%;
+    }
+    100% {
+        opacity: 100%;
     }
 }

@@ -29,6 +29,9 @@ window.addEventListener("message", (event) => {
         ELISM_Screen_Toggle();
         
     }
+    if (action == "RULE_ALLOWOVERTIME_UPDATE"){
+        ELISM_Timer_Rule_AllowOvertime_Update(value1);
+    }
 });
 
 function ELISM_Command_Broadcast(action, value1){
@@ -37,11 +40,12 @@ function ELISM_Command_Broadcast(action, value1){
     }
 }
 
-var Timer_Seconds = 120;
+var Timer_Seconds = 180;
 function ELISM_Timer_Reset(StartingTime){
     Timer_Seconds = StartingTime;
     Timer_Running_Seconds = 0;
     ELISM_Timer_Time_Render();
+    Timer_Overtime_Informed = false;
 }
 
 function ELISM_Timer_Time_Render(){
@@ -49,24 +53,36 @@ function ELISM_Timer_Time_Render(){
 }
 
 function ELISM_Timer_Time_Format(){
-    const minutes = Math.floor(Timer_Seconds / 60);
-    const remainingSeconds = Timer_Seconds % 60;
-    return `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
+    const absSeconds = Math.abs(Timer_Seconds);
+    const minutes = Math.floor(absSeconds / 60);
+    const remainingSeconds = absSeconds % 60;
+    if (Timer_Seconds >= 0){
+        return `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
+    } else if (Timer_Seconds < 0){
+        return `-${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
+    }
 }
 
 let Timer_Interval;
 var Timer_Running_Seconds = 0;
+var Timer_Rule_AllowOvertime = true;
+var Timer_State = "paused";
 
 function ELISM_Timer_Start(){
     if (Timer_Interval == null){
         Timer_Interval = setInterval(() => {
             Timer_Seconds--;
             Timer_Running_Seconds++;
-            if (Timer_Seconds > 0){
-                ELISM_Timer_Time_Render();
-                ELISM_Command_Broadcast("UPDATE_TIMER_STATE", "running");
-            } else {
-                ELISM_Timer_Stop();
+            Timer_State = "running"
+            ELISM_Timer_Time_Render();
+            ELISM_Timer_Phases_Update();
+            ELISM_Command_Broadcast("UPDATE_TIMER_STATE", "running");
+            if (Timer_Seconds <= 0){
+                if(Timer_Rule_AllowOvertime == false){
+                    ELISM_Timer_Stop();
+                } else {
+                    ELISM_Timer_Overtime();
+                }
             }
             ELISM_Command_Broadcast("UPDATE_TIMER", Timer_Seconds);
             ELISM_Command_Broadcast("UPDATE_TIMER_RUNNING", Timer_Running_Seconds);
@@ -80,6 +96,45 @@ function ELISM_Timer_Stop(){
     ELISM_Timer_Time_Render();
     ELISM_Command_Broadcast("UPDATE_TIMER", Timer_Seconds);
     ELISM_Command_Broadcast("UPDATE_TIMER_STATE", "paused");
+    Timer_State = "paused"
+    ELISM_Timer_Phases_Update();
+}
+
+var Timer_Overtime_Informed = false;
+function ELISM_Timer_Overtime(){
+    if (Timer_Overtime_Informed == false){
+        Timer_Overtime_Informed = true;
+        Element_Attribute_Set("ELISM24_Timer_Time", "Overtime", "");
+    }
+}
+
+function ELISM_Timer_Phases_Update(){
+    if (Timer_State == "running") {
+        if (Timer_Seconds > 30){
+            Element_Attribute_Set("ELISM24_Timer", "Phase", "Green");
+            Element_Attribute_Set("ELISM24_Timer_Phase_Red", "State", "Inactive");
+            Element_Attribute_Set("ELISM24_Timer_Phase_Yellow", "State", "Inactive");
+            Element_Attribute_Set("ELISM24_Timer_Phase_Green", "State", "Active");
+        }
+        if (Timer_Seconds <= 30){
+            Element_Attribute_Set("ELISM24_Timer", "Phase", "Yellow");
+            Element_Attribute_Set("ELISM24_Timer_Phase_Red", "State", "Inactive");
+            Element_Attribute_Set("ELISM24_Timer_Phase_Yellow", "State", "Active");
+            Element_Attribute_Set("ELISM24_Timer_Phase_Green", "State", "Inactive");
+        }
+        if (Timer_Seconds <= 0){
+            Element_Attribute_Set("ELISM24_Timer", "Phase", "Red");
+            Element_Attribute_Set("ELISM24_Timer_Phase_Red", "State", "Active");
+            Element_Attribute_Set("ELISM24_Timer_Phase_Yellow", "State", "Inactive");
+            Element_Attribute_Set("ELISM24_Timer_Phase_Green", "State", "Inactive");
+        }
+    } else {
+        Element_Attribute_Set("ELISM24_Timer", "Phase", "Standby");
+        Element_Attribute_Set("ELISM24_Timer_Phase_Red", "State", "Standby");
+        Element_Attribute_Set("ELISM24_Timer_Phase_Yellow", "State", "Standby");
+        Element_Attribute_Set("ELISM24_Timer_Phase_Green", "State", "Standby");
+    }
+    
 }
 
 function ELISM_Timer_State_Toggle(){
@@ -121,6 +176,10 @@ function ELISM_Screen_Toggle(){
         Element_Attribute_Set("ELISM_Decorations", "State", "Inactive");
     }
     ELISM_Command_Broadcast('UPDATE_BANNER_DISPLAY_STATE', Element_Attribute_Get("ELISM_Decorations", "State"));
+}
+
+function ELISM_Timer_Rule_AllowOvertime_Update(State){
+    Timer_Rule_AllowOvertime = State;
 }
 
 var Particle_Count = 0;
