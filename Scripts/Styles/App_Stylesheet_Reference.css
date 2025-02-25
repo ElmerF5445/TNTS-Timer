@@ -27,6 +27,16 @@
 	font-weight: normal;
 }
 
+@font-face {
+	font-family: "Gilroy_Bold";
+	src: url("../../Assets/Fonts/Gilroy-Bold.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: "Gilroy_Heavy";
+	src: url("../../Assets/Fonts/Gilroy-Heavy.ttf") format("truetype");
+}
+
 :root{
 	--BG-Img-Wallpaper-Main: url(../../Assets/Background/Wallpaper_Main.png);
 	--BG-Img-Wallpaper-Clock: url(../../Assets/Background/Clock_Screen.png);

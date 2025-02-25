@@ -317,7 +317,7 @@
                     },
                     "ClockScreen": false,
                     "LoadingScreen": true,
-                    "StatusBar": false,
+                    "StatusBar": true,
                     "StatusBar_Elements": {
                         "EnableAll": true,
                         "Clock": true,

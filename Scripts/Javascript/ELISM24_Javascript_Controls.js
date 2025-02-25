@@ -1,6 +1,7 @@
 var Display;
 function ELISM_Display_Open(){
     Display = window.open("Pages/ELISM24_Display.html", "timerWindow", "width=1280,height=720");
+    ELISM_Slides_Generate();
 }
 
 function ELISM_Command_Broadcast(action, value1){
@@ -10,6 +11,18 @@ function ELISM_Command_Broadcast(action, value1){
         Toasts_CreateToast('Assets/Icons/icon_error.png', 'Command not broadcast', 'The display window is either closed or had been disconnected. Click "Open display window" to reconnect.');
     }
 }
+
+window.addEventListener("DOMContentLoaded", function(){
+    this.setTimeout(function(){
+        TextAreas = document.querySelectorAll(".Input_Text_Long");
+        TextAreas.forEach(TextArea_Element => {
+            if (TextArea_Element.getAttribute("Autoresize") == "true"){
+                TextArea_Element.style.height = 'auto';
+                TextArea_Element.style.height = ((TextArea_Element.scrollHeight) - 20) + 'px';
+            }
+        });
+    }, 1000);
+});
 
 window.addEventListener("message", (event) => {
     const {action, value1} = event.data;
@@ -39,6 +52,9 @@ window.addEventListener("message", (event) => {
         } else {
             document.getElementById("ELISM24_Controls_Values_BannerDisplayState").innerHTML = "Banner is <b><u>hidden</b></u>"
         }
+    }
+    if (action == "UPDATE_ACTIVE_SCREEN"){
+        document.getElementById("ELISM24_Controls_Values_BannerDisplayState").innerHTML = `Active screen is <b><u>${value1}</b></u>`;
     }
 });
 
@@ -213,3 +229,4 @@ function ELISM_Timer_Rule_Update(Rule){
         }
     }
 }
+

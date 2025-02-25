@@ -547,6 +547,9 @@
                             <button class="General_Button" onclick="ELISM_Command_Broadcast('STOP_TIMER')">
                                 Stop timer
                             </button>
+                            <button class="General_Button" onclick="ELISM_Command_Broadcast('BUZZER')">
+                                Play buzzer
+                            </button>
                             <!-- <button class="General_Button" onclick="ELISM_Violations_Update()">
                                 Violation
                             </button> -->
@@ -585,71 +588,182 @@
                             </div> -->
                             <div class="ELISM24_Controls_Values_Card">
                                 <p class="General_Paragraph" id="ELISM24_Controls_Values_BannerDisplayState">
-                                    Display state
+                                    Active screen is <b><u>Banner</u></b>
                                 </p>
-                                <button class="General_Button" onclick="ELISM_Command_Broadcast('TOGGLE_SCREEN_STATE')">
-                                    Toggle banner state
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); grid-gap: 10px;">
+                                    <button class="General_Button" onclick="ELISM_Command_Broadcast('SCREEN_SWITCH', 'Banner')">
+                                        Banner
+                                    </button>
+                                    <button class="General_Button" onclick="ELISM_Command_Broadcast('SCREEN_SWITCH', 'Question')">
+                                        Question
+                                    </button>
+                                    <button class="General_Button" onclick="ELISM_Command_Broadcast('SCREEN_SWITCH', 'Timer')">
+                                        Timer
+                                    </button>
+                                    <button class="General_Button" onclick="ELISM_Command_Broadcast('SCREEN_SWITCH', 'Slides')">
+                                        Slides
+                                    </button>
+                                    <button class="General_Button" onclick="ELISM_Command_Broadcast('SCREEN_SWITCH', 'Clock')">
+                                        Clock
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="ELISM24_Controls_Values_Card">
+                                <textarea type="text" class="Input_Text_Long" autocomplete="off" id="ELISM24_Controls_Values_Input_Question" placeholder="Question" oninput="ELISM_Command_Broadcast('UPDATE_QUESTION_DISPLAY_TEXT', document.getElementById('ELISM24_Controls_Values_Input_Question').value)" Autoresize="true"></textarea>
+                            </div>                            
+                        </div>
+                    </div>
+                    <div class="ELISM24_RecordSlides">
+                        <div class="ELISM24_Records">
+                            <div class="ELISM24_Records_Title">
+                                <h2 class="General_Title">
+                                    Records
+                                </h2>
+                                <button class="General_Button" onclick="ELISM_Records_Add()">
+                                    Add this record
                                 </button>
                             </div>
-                            <!-- <div class="ELISM24_Controls_Values_Card">
-                                <input type="text" class="Input_Text" autocomplete="off" id="ELISM24_Controls_Values_Input_Word" placeholder="Word"/>
-                                <button class="General_Button" onclick="ELISM_Command_Broadcast('UPDATE_WORD_DISPLAY_TEXT', document.getElementById('ELISM24_Controls_Values_Input_Word').value)">
-                                    Update word display
-                                </button>
-                            </div>                             -->
+                            <div class="ELISM24_Records_List_Item" style="font-weight: bolder;">
+                                <p class="ELISM24_Records_List_Item_Text">
+                                    Contestant
+                                </p>
+                                <!-- <p class="ELISM24_Records_List_Item_Text">
+                                    Word
+                                </p> -->
+                                <p class="ELISM24_Records_List_Item_Text">
+                                    Time remaining
+                                </p>
+                                <p class="ELISM24_Records_List_Item_Text">
+                                    Running time
+                                </p>
+                                <!-- <p class="ELISM24_Records_List_Item_Text">
+                                    Violations
+                                </p> -->
+                                <span></span>
+                            </div>
+                            <div class="ELISM24_Records_List" id="ELISM24_Records_List">
+                                <div class="ELISM24_Records_List_Item">
+                                    <p class="ELISM24_Records_List_Item_Text">
+                                        The English Society
+                                    </p>
+                                    <p class="ELISM24_Records_List_Item_Text">
+                                        Library
+                                    </p>
+                                    <p class="ELISM24_Records_List_Item_Text">
+                                        1:58
+                                    </p>
+                                    <p class="ELISM24_Records_List_Item_Text">
+                                        0:02
+                                    </p>
+                                    <p class="ELISM24_Records_List_Item_Text">
+                                        0
+                                    </p>
+                                    <button class="General_Button ELISM24_Records_List_Item_Delete">
+                                        <img src="Assets/Icons/iconNew_delete.png" alt=""/>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
-                        
-                    </div>
-                    <div class="ELISM24_Records">
-                        <div class="ELISM24_Records_Title">
+                        <div class="ELISM24_Controls_Slides">
                             <h2 class="General_Title">
-                                Records
+                                Slides
                             </h2>
-                            <button class="General_Button" onclick="ELISM_Records_Add()">
-                                Add this record
-                            </button>
-                        </div>
-                        <div class="ELISM24_Records_List_Item" style="font-weight: bolder;">
-                            <p class="ELISM24_Records_List_Item_Text">
-                                Contestant
-                            </p>
-                            <!-- <p class="ELISM24_Records_List_Item_Text">
-                                Word
-                            </p> -->
-                            <p class="ELISM24_Records_List_Item_Text">
-                                Time remaining
-                            </p>
-                            <p class="ELISM24_Records_List_Item_Text">
-                                Running time
-                            </p>
-                            <!-- <p class="ELISM24_Records_List_Item_Text">
-                                Violations
-                            </p> -->
-                            <span></span>
-                        </div>
-                        <div class="ELISM24_Records_List" id="ELISM24_Records_List">
-                            <div class="ELISM24_Records_List_Item">
-                                <p class="ELISM24_Records_List_Item_Text">
-                                    The English Society
-                                </p>
-                                <p class="ELISM24_Records_List_Item_Text">
-                                    Library
-                                </p>
-                                <p class="ELISM24_Records_List_Item_Text">
-                                    1:58
-                                </p>
-                                <p class="ELISM24_Records_List_Item_Text">
-                                    0:02
-                                </p>
-                                <p class="ELISM24_Records_List_Item_Text">
-                                    0
-                                </p>
-                                <button class="General_Button ELISM24_Records_List_Item_Delete">
-                                    <img src="Assets/Icons/iconNew_delete.png" alt=""/>
+                            <div class="ELISM24_Controls_Slides_List">
+                                <button class="General_Button ELISM24_Controls_Values_Card ELISM24_Controls_Slides_Item" onclick="ELISM_Command_Broadcast('SLIDE_SWITCH', 6)">
+                                    <div class="ELISM24_Controls_Slides_Item_Thumbnail">
+                                        <img class="ELISM24_Controls_Slides_Item_Thumbnail_Image" src="Assets/Images/Slide_6.png" loading="lazy"/>
+                                    </div>
+                                    <p class="General_Paragraph ELISM24_Controls_Slides_Text">
+                                        Title w/ Contest
+                                    </p>
+                                </button> 
+                                <button class="General_Button ELISM24_Controls_Values_Card ELISM24_Controls_Slides_Item" onclick="ELISM_Command_Broadcast('SLIDE_SWITCH', 7)">
+                                    <div class="ELISM24_Controls_Slides_Item_Thumbnail">
+                                        <img class="ELISM24_Controls_Slides_Item_Thumbnail_Image" src="Assets/Images/Slide_7.png" loading="lazy"/>
+                                    </div>
+                                    <p class="General_Paragraph ELISM24_Controls_Slides_Text">
+                                        Judges
+                                    </p>
+                                </button> 
+                                <button class="General_Button ELISM24_Controls_Values_Card ELISM24_Controls_Slides_Item" onclick="ELISM_Command_Broadcast('SLIDE_SWITCH', 1)">
+                                    <div class="ELISM24_Controls_Slides_Item_Thumbnail">
+                                        <img class="ELISM24_Controls_Slides_Item_Thumbnail_Image" src="Assets/Images/Slide_1.png" loading="lazy"/>
+                                    </div>
+                                    <p class="General_Paragraph ELISM24_Controls_Slides_Text">
+                                        Mechanics 1 - 3
+                                    </p>
+                                </button> 
+                                <button class="General_Button ELISM24_Controls_Values_Card ELISM24_Controls_Slides_Item" onclick="ELISM_Command_Broadcast('SLIDE_SWITCH', 2)">
+                                    <div class="ELISM24_Controls_Slides_Item_Thumbnail">
+                                        <img class="ELISM24_Controls_Slides_Item_Thumbnail_Image" src="Assets/Images/Slide_2.png" loading="lazy"/>
+                                    </div>
+                                    <p class="General_Paragraph ELISM24_Controls_Slides_Text">
+                                        Mechanics 4 - 6
+                                    </p>
+                                </button> 
+                                <button class="General_Button ELISM24_Controls_Values_Card ELISM24_Controls_Slides_Item" onclick="ELISM_Command_Broadcast('SLIDE_SWITCH', 3)">
+                                    <div class="ELISM24_Controls_Slides_Item_Thumbnail">
+                                        <img class="ELISM24_Controls_Slides_Item_Thumbnail_Image" src="Assets/Images/Slide_3.png" loading="lazy"/>
+                                    </div>
+                                    <p class="General_Paragraph ELISM24_Controls_Slides_Text">
+                                        Mechanics 7 - 9
+                                    </p>
                                 </button>
+                                <button class="General_Button ELISM24_Controls_Values_Card ELISM24_Controls_Slides_Item" onclick="ELISM_Command_Broadcast('SLIDE_SWITCH', 4)">
+                                    <div class="ELISM24_Controls_Slides_Item_Thumbnail">
+                                        <img class="ELISM24_Controls_Slides_Item_Thumbnail_Image" src="Assets/Images/Slide_4.png" loading="lazy"/>
+                                    </div>
+                                    <p class="General_Paragraph ELISM24_Controls_Slides_Text">
+                                        Mechanics 10 - 11
+                                    </p>
+                                </button>
+                                <button class="General_Button ELISM24_Controls_Values_Card ELISM24_Controls_Slides_Item" onclick="ELISM_Command_Broadcast('SLIDE_SWITCH', 5)">
+                                    <div class="ELISM24_Controls_Slides_Item_Thumbnail">
+                                        <img class="ELISM24_Controls_Slides_Item_Thumbnail_Image" src="Assets/Images/Slide_5.png" loading="lazy"/>
+                                    </div>
+                                    <p class="General_Paragraph ELISM24_Controls_Slides_Text">
+                                        Mechanics 12 - 13
+                                    </p>
+                                </button>    
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="ELISM24_Controls">
+                        <div class="ELISM24_Controls_Values">
+                            <div class="ELISM24_Controls_Values_Card">
+                                <p class="General_Paragraph">
+                                    Screen_Banner
+                                </p>
+                                <textarea type="text" class="Input_Text_Long" Autoresize="true" autocomplete="off" id="ELISM24_Controls_Values_Input_CSS_Banner" placeholder="CSS code" oninput="ELISM_Command_Broadcast('EDIT_CSS_BANNER', this.value)"></textarea>
+                            </div>
+                            <div class="ELISM24_Controls_Values_Card">
+                                <p class="General_Paragraph">
+                                    Screen_Question
+                                </p>
+                                <textarea type="text" class="Input_Text_Long" Autoresize="true" autocomplete="off" id="ELISM24_Controls_Values_Input_CSS_Question" placeholder="CSS code" oninput="ELISM_Command_Broadcast('EDIT_CSS_QUESTION', this.value)"></textarea>
+                            </div>
+                            <div class="ELISM24_Controls_Values_Card">
+                                <p class="General_Paragraph">
+                                    Screen_Timer
+                                </p>
+                                <textarea type="text" class="Input_Text_Long" Autoresize="true" autocomplete="off" id="ELISM24_Controls_Values_Input_CSS_Timer" placeholder="CSS code" oninput="ELISM_Command_Broadcast('EDIT_CSS_TIMER', this.value)"></textarea>
+                            </div>
+                            <div class="ELISM24_Controls_Values_Card">
+                                <p class="General_Paragraph">
+                                    Screen_Slides
+                                </p>
+                                <textarea type="text" class="Input_Text_Long" Autoresize="true" autocomplete="off" id="ELISM24_Controls_Values_Input_CSS_Slides" placeholder="CSS code" oninput="ELISM_Command_Broadcast('EDIT_CSS_SLIDES', this.value)"></textarea>
+                            </div>
+                            <div class="ELISM24_Controls_Values_Card">
+                                <p class="General_Paragraph">
+                                    Screen_Clock
+                                </p>
+                                <textarea type="text" class="Input_Text_Long" Autoresize="true" autocomplete="off" id="ELISM24_Controls_Values_Input_CSS_Clock" placeholder="CSS code" oninput="ELISM_Command_Broadcast('EDIT_CSS_CLOCK', this.value)"></textarea>
                             </div>
                         </div>
                     </div>
+                    
                 </div>
                 <div class="Tab_Container_Content_Item Content_Item" id="tab_TabIDHere2">
                     <h1 class="General_Title">

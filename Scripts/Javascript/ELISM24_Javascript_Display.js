@@ -32,6 +32,33 @@ window.addEventListener("message", (event) => {
     if (action == "RULE_ALLOWOVERTIME_UPDATE"){
         ELISM_Timer_Rule_AllowOvertime_Update(value1);
     }
+    if (action == "SLIDE_SWITCH"){
+        ELISM_Slides_Switch(value1)
+    }
+    if (action == "SCREEN_SWITCH"){
+        ELISM_Screen_Switch(value1)
+    }
+    if (action == "UPDATE_QUESTION_DISPLAY_TEXT"){
+        Element_InnerHTML_Set("ELISM24_Question_Text", value1);
+    }
+    if (action == "EDIT_CSS_BANNER"){
+        ELISM_CSS_Edit("Screen_Banner", value1);
+    }
+    if (action == "EDIT_CSS_QUESTION"){
+        ELISM_CSS_Edit("Screen_Question", value1);
+    }
+    if (action == "EDIT_CSS_TIMER"){
+        ELISM_CSS_Edit("Screen_Timer", value1);
+    }
+    if (action == "EDIT_CSS_SLIDES"){
+        ELISM_CSS_Edit("Screen_Slides", value1);
+    }
+    if (action == "EDIT_CSS_CLOCK"){
+        ELISM_CSS_Edit("Screen_Clock", value1);
+    }
+    if (action == "BUZZER"){
+        ELISM_Timer_Buzzer();
+    }
 });
 
 function ELISM_Command_Broadcast(action, value1){
@@ -83,11 +110,18 @@ function ELISM_Timer_Start(){
                 } else {
                     ELISM_Timer_Overtime();
                 }
+                if (Timer_Seconds == -15){
+                    ELISM_Timer_Buzzer();
+                }
             }
             ELISM_Command_Broadcast("UPDATE_TIMER", Timer_Seconds);
             ELISM_Command_Broadcast("UPDATE_TIMER_RUNNING", Timer_Running_Seconds);
         }, 1000);
     }
+}
+
+function ELISM_Timer_Buzzer(){
+    Sound_Buzzer.play();
 }
 
 function ELISM_Timer_Stop(){
@@ -166,17 +200,6 @@ function ELISM_Violation_Add(Addition){
     
 }
 
-var Screen_State = "Timer";
-function ELISM_Screen_Toggle(){
-    if (Screen_State == "Timer"){
-        Screen_State = "Banner";
-        Element_Attribute_Set("ELISM_Decorations", "State", "Active");
-    } else {
-        Screen_State = "Timer";
-        Element_Attribute_Set("ELISM_Decorations", "State", "Inactive");
-    }
-    ELISM_Command_Broadcast('UPDATE_BANNER_DISPLAY_STATE', Element_Attribute_Get("ELISM_Decorations", "State"));
-}
 
 function ELISM_Timer_Rule_AllowOvertime_Update(State){
     Timer_Rule_AllowOvertime = State;
@@ -257,4 +280,99 @@ function ELISM_Decoration_Particle_Generate(){
     //     var State_End = `transform: scale(0.8) translate(${OffsetX + 200}%, ${OffsetY + 200}%);`;
     //     Particle_Create("ELISM_Banner", "Assets/Images/ELISM24/Particle_2.png", "ELISM_Sparkle", `${State_Start}`, `${State_End}`);
     // }
+}
+
+var Sound_Buzzer;
+// Generate slides
+window.addEventListener("DOMContentLoaded", function(){
+    Sound_Buzzer = new Audio("Assets/Sounds/Buzzer.mp3");
+});
+window.addEventListener("DOMContentLoaded", ELISM_Slides_Generate);
+function ELISM_Slides_Generate(){
+    // var Slides_Links = [
+    //     "https://elmerf5445.github.io/TNTS-Timer/Assets/Images/Slide_1.png",
+    //     "https://elmerf5445.github.io/TNTS-Timer/Assets/Images/Slide_2.png",
+    //     "https://elmerf5445.github.io/TNTS-Timer/Assets/Images/Slide_3.png",
+    //     "https://elmerf5445.github.io/TNTS-Timer/Assets/Images/Slide_4.png",
+    //     "https://elmerf5445.github.io/TNTS-Timer/Assets/Images/Slide_5.png"
+    // ];
+    var Slides_Links = [
+        "Assets/Images/Slide_1.png",
+        "Assets/Images/Slide_2.png",
+        "Assets/Images/Slide_3.png",
+        "Assets/Images/Slide_4.png",
+        "Assets/Images/Slide_5.png",
+        "Assets/Images/Slide_6.png",
+        "Assets/Images/Slide_7.png"
+    ];
+    var Slides = Slides_Links
+    Element_Clear("ELISM24_Slides");
+    for (a = 0; a < Slides.length; a++){
+        var Slide_Item = Element_Create('img');
+        Slide_Item.setAttribute("src", Slides[a]);
+        Slide_Item.setAttribute("class", "ELISM24_Slides_Slide");
+        Slide_Item.setAttribute("id", `ELISM24_Slides_Slide_${a + 1}`);
+        Slide_Item.setAttribute("State", "Inactive");
+        Element_Append("ELISM24_Slides", Slide_Item);
+    }
+}
+
+function ELISM_Slides_Switch(Slide){
+    var Slide_List = Element_Get_ByQuery_All(".ELISM24_Slides_Slide");
+    for (a = 0; a < Slide_List.length; a++){
+        Element_Attribute_Set(`ELISM24_Slides_Slide_${a + 1}`, "State", "Inactive");   
+    }
+    Element_Attribute_Set(`ELISM24_Slides_Slide_${Slide}`, "State", "Active");   
+}
+
+var Screen_State = "Banner";
+function ELISM_Screen_Toggle(){
+    if (Screen_State == "Timer"){
+        Screen_State = "Banner";
+        Element_Attribute_Set("ELISM_Decorations", "State", "Active");
+    } else {
+        Screen_State = "Timer";
+        Element_Attribute_Set("ELISM_Decorations", "State", "Inactive");
+    }
+    ELISM_Command_Broadcast('UPDATE_BANNER_DISPLAY_STATE', Element_Attribute_Get("ELISM_Decorations", "State"));
+}
+
+function ELISM_Screen_Switch(Screen){
+    Element_Attribute_Set("ELISM24_Decorations", "Display_State", "Inactive");
+    Element_Attribute_Set("ELISM24_Question", "Display_State", "Inactive");
+    Element_Attribute_Set("ELISM24_Timer", "Display_State", "Inactive");
+    Element_Attribute_Set("ELISM24_Slides", "Display_State", "Inactive");    
+    Element_Attribute_Set("ELISM24_Clock_Overlay", "Display_State", "Inactive");    
+    if (Screen == "Banner"){
+        Element_Attribute_Set("ELISM24_Decorations", "Display_State", "Active");
+    } else if (Screen == "Question"){
+        Element_Attribute_Set("ELISM24_Question", "Display_State", "Active");
+    } else if (Screen == "Timer"){
+        Element_Attribute_Set("ELISM24_Timer", "Display_State", "Active");
+    } else if (Screen == "Slides"){
+        Element_Attribute_Set("ELISM24_Slides", "Display_State", "Active");
+    } else if (Screen == "Clock"){
+        Element_Attribute_Set("ELISM24_Clock_Overlay", "Display_State", "Active");
+    }
+    ELISM_Command_Broadcast('UPDATE_ACTIVE_SCREEN', Screen);
+}
+
+function ELISM_CSS_Edit(Type, Value){
+    switch (Type){
+        case "Screen_Banner":
+            Element_Attribute_Set("ELISM24_Decorations", "style", Value);
+            break;
+        case "Screen_Question":
+            Element_Attribute_Set("ELISM24_Question", "style", Value);
+            break;
+        case "Screen_Timer":
+            Element_Attribute_Set("ELISM24_Timer", "style", Value);
+            break;
+        case "Screen_Slides":
+            Element_Attribute_Set("ELISM24_Slides", "style", Value);
+            break;
+        case "Screen_Clock":
+            Element_Attribute_Set("ELISM24_Clock_Overlay", "style", Value);
+            break;
+    }
 }

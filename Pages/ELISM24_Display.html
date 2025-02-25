@@ -26,7 +26,7 @@
     <!-- <script src="Scripts/Javascript/App_Main.js"></script> -->
     <script src="Scripts/Javascript/FileSaver.js" defer></script>
     <script src="Scripts/Javascript/App_Javascript_Debugging.js" defer></script>
-    <script src="Scripts/Javascript/App_Javascript_ERUMAUI_Core.js" defer></script>
+    <script src="https://elmerf5445.github.io/ERUMA-UI/Scripts/Javascript/App_Javascript_ERUMAUI_Core.js" defer></script>
     <script src="Scripts/Javascript/App_Javascript_ERUMAUI.js" defer></script>
     <script src="Scripts/Javascript/App_Javascript_Extras.js" defer></script>
     <script src="Scripts/Javascript/App_Javascript_KeyboardControls.js" defer></script>
@@ -413,7 +413,11 @@
                 </a>
             </div>
         </div>
-        
+        <div class="ELISM24_Clock_Overlay" id="ELISM24_Clock_Overlay" Display_State="Inactive">
+            <h1 class="ELISM24_Clock_Overlay_Time" id="Header_StatusTray_Clock_Time">
+                6:05 PM
+            </h1>
+        </div>
     </div>
     <div class="Header_SidebarToggle" id="Header_SidebarToggle" onclick="Sidebar_Toggle()">
         <img class='Header_SidebarToggle_Icon' src='Assets/Icons/icon_hamburgermenu.png' draggable='false' loading='lazy' id="Header_SidebarToggle_Icon"/>
@@ -432,9 +436,7 @@
 		</div>
 		<div class="Header_StatusTray" id="Header_StatusTray" onclick="Header_Toggle_StatusTray()">
 			<div class="Header_StatusTray_Clock" id="Header_StatusTray_Clock">
-				<h1 class="Header_StatusTray_Clock_Time" id="Header_StatusTray_Clock_Time">
-					6:05 PM
-                </h1>
+				
 			</div>
 			<div class="Header_StatusTray_Battery" id="Header_StatusTray_Battery">
 				<h1 class="Header_StatusTray_Battery_Percentage" id="Header_StatusTray_Battery_Percentage">
@@ -512,14 +514,22 @@
         <main class="MainContent" id="MainContent" Style_Margin_Header="Enabled" Style_Margin_Ribbon="Enabled" Style_Margin_Sidebar="Enabled">
             <div class="Content" id="Content" Style_Margin="Enabled" Tabs_CurrentTab="">
                 <div class="Tab_Container_Content_Item Content_Item" id="tab_TabIDHere" Background>
-                    <div class="ELISM24_Banner" id="ELISM_Decorations">
+                    <div class="ELISM24_Question" id="ELISM24_Question" Display_State="Inactive">
+                        <h1 class="ELISM24_Question_Text" id="ELISM24_Question_Text">
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et fugiat, sapiente debitis non sed omnis ut. Eos ea accusamus dolores corrupti, quo quia blanditiis eum voluptate, incidunt, atque repudiandae nesciunt?
+                        </h1>
+                    </div>
+                    <div class="ELISM24_Slides" id="ELISM24_Slides" Display_State="Inactive">
+                        <img src="Assets/Images/Slide_1.png" class="ELISM24_Slides_Slide" id="ELISM24_Slides_Slide_1" alt=""/>
+                    </div>
+                    <div class="ELISM24_Banner" id="ELISM24_Decorations" Display_State="Active">
                         <img src="Assets/Images/Banner_Layer_1.png" class="ELISM24_Banner_Layer" alt=""/>
                         <!-- <img src="Assets/Images/Banner_Layer_2.png" class="ELISM24_Banner_Layer" alt=""/>
                         <img src="Assets/Images/Banner_Layer_3.png" class="ELISM24_Banner_Layer" alt=""/>
                         <img src="Assets/Images/Banner_Layer_4.png" class="ELISM24_Banner_Layer" alt=""/> -->
                         <img src="Assets/Images/Title.png" class="ELISM24_Banner_Logo" alt=""/>
                     </div>
-                    <div class="ELISM24_Timer" id="ELISM24_Timer" State="Timer">
+                    <div class="ELISM24_Timer" id="ELISM24_Timer" State="Timer" Display_State="Inactive">
                         <div class="ELISM24_Timer_Phases">
                             <div class="ELISM24_Timer_Phases_Item" Phase="Red" id="ELISM24_Timer_Phase_Red"></div>
                             <div class="ELISM24_Timer_Phases_Item" Phase="Yellow" id="ELISM24_Timer_Phase_Yellow"></div>
@@ -548,6 +558,5 @@
             </div>
         </main>
     </div>
-    
 </body>
 </html>

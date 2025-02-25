@@ -13,7 +13,7 @@
     z-index: 50;
 }
 
-.ELISM24_Controls, .ELISM24_Records{
+.ELISM24_Controls, .ELISM24_RecordSlides{
     margin-left: 5%;
     margin-right: 5%;
 }
@@ -84,45 +84,6 @@
     background-color: var(--BG-Color-Opacitated);
 }
 
-.ELISM24_Records{
-    margin-top: 10px;
-}
-
-.ELISM24_Records_Title{
-    display: grid;
-    grid-template-columns: 1fr auto;
-}
-
-.ELISM24_Records_List_Item{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr) 80px;
-    align-items: center;
-    border-radius: 5px;
-    padding: 10px;
-}
-
-.ELISM24_Records_List > .ELISM24_Records_List_Item:hover{
-    background-color: var(--BG-Color-Hover);
-    cursor: pointer;
-}
-
-.ELISM24_Records_List_Item_Text{
-    font-family: var(--Text-Font-Secondary);
-    color: var(--Text-Color);
-    margin: 0;
-}
-
-.ELISM24_Records_List_Item_Delete{
-    height: 40px;
-}
-
-.ELISM24_Records_List_Item_Delete > img{
-    width: 20px;
-    height: 20px;
-    padding: 10px;
-    margin: 0;
-}
-
 .ELISM24_Timer{
     /* background-color: #2b2f51;
     background-color: #3267ff; */
@@ -171,7 +132,7 @@
 
 
 .ELISM24_Timer_Time_Text, .ELISM24_Timer_Word_Text{
-    font-family: Meditative;
+    font-family: Gilroy_Bold;
     font-weight: 1500;
     text-align: center;
     margin: 0;
@@ -208,9 +169,6 @@
     z-index: 150;
 }
 
-.ELISM24_Banner[State = "Active"]{
-    opacity: 100%;
-}
 
 .ELISM24_Banner_Layer{
     position: absolute;
@@ -353,4 +311,157 @@
     100% {
         opacity: 100%;
     }
+}
+
+.ELISM24_Slides{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    opacity: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 150;
+}
+
+.ELISM24_Slides[State = "Active"]{
+    opacity: 100%;
+}
+
+.ELISM24_Slides_Slide{
+    position: absolute;
+    object-fit: cover;
+    height: 1000px;
+}
+
+.ELISM24_Slides_Slide[State = "Inactive"]{
+    opacity: 0%;
+}
+
+.ELISM24_Slides_Slide[State = "Active"]{
+    opacity: 100%;
+}
+
+.ELISM24_RecordSlides{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+    margin-top: 10px;
+}
+
+.ELISM24_Records{
+    margin-top: 10px;
+}
+
+.ELISM24_Records_Title{
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+
+.ELISM24_Records_List_Item{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) 80px;
+    align-items: center;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.ELISM24_Records_List > .ELISM24_Records_List_Item:hover{
+    background-color: var(--BG-Color-Hover);
+    cursor: pointer;
+}
+
+.ELISM24_Records_List_Item_Text{
+    font-family: var(--Text-Font-Secondary);
+    color: var(--Text-Color);
+    margin: 0;
+}
+
+.ELISM24_Records_List_Item_Delete{
+    height: 40px;
+}
+
+.ELISM24_Records_List_Item_Delete > img{
+    width: 20px;
+    height: 20px;
+    padding: 10px;
+    margin: 0;
+}
+
+.ELISM24_Controls_Slides_List{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-gap: 10px;
+    margin-top: 10px;
+}
+
+.ELISM24_Controls_Slides_Item{
+    display: grid;
+    grid-template-rows: 1fr auto;
+}
+
+.ELISM24_Controls_Slides_Item_Thumbnail{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ELISM24_Controls_Slides_Item_Thumbnail_Image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ELISM24_Banner[Display_State = "Active"], .ELISM24_Question[Display_State = "Active"], .ELISM24_Timer[Display_State = "Active"], .ELISM24_Slides[Display_State = "Active"]{
+    opacity: 100%;
+}
+
+.ELISM24_Banner[Display_State = "Inactive"], .ELISM24_Question[Display_State = "Inactive"], .ELISM24_Timer[Display_State = "Inactive"], .ELISM24_Slides[Display_State = "Inactive"]{
+    opacity: 0%;
+}
+
+.ELISM24_Question{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.ELISM24_Question_Text{
+    font-family: Gilroy_Bold;
+    color: white;
+    text-align: center;
+    font-size: 5vw;
+    margin: 150px;
+}
+
+.ELISM24_Clock_Overlay{
+    width: 100%;
+    height: 100%;
+    padding: 50px;
+}
+
+.ELISM24_Clock_Overlay_Time{
+    font-family: Gilroy_Bold;
+    color: white;
+    margin: 0;
+}
+
+.ELISM24_Clock_Overlay[Display_State = "Inactive"] > .ELISM24_Clock_Overlay_Time{
+    font-size: 75px;
+    position: absolute;
+    bottom: 40px;
+}
+
+.ELISM24_Clock_Overlay[Display_State = "Active"]{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ELISM24_Clock_Overlay[Display_State = "Active"] > .ELISM24_Clock_Overlay_Time{
+    font-size: 20vw;
 }
